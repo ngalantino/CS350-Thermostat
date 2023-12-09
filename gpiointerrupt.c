@@ -96,7 +96,7 @@ void initUART(void)
 UART2_Params uartParams;
 
 // Init the driver
-UART2_init();
+//UART2_init();
 // Configure the driver
 UART2_Params_init(&uartParams);
 uartParams.writeMode = UART2_Mode_BLOCKING;
@@ -273,21 +273,27 @@ void *mainThread(void *arg0)
         GPIO_enableInt(CONFIG_GPIO_BUTTON_1);
     }
 
-    return (NULL);
-
 
     initUART();
     initI2C();
     initTimer();
 
-    int temperature = readTemp();
+
 
     while(1)
     {
+        int temperature = readTemp();
         //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
+        DISPLAY(snprintf(output, 64, "<%02d>\n\r", temperature))
 
         while (!TimerFlag){}
         TimerFlag=0;
         // ++timer;
     }
+
+    return (NULL);
+
+
+
+
 }
