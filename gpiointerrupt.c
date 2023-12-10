@@ -87,6 +87,7 @@ while (1) {}
 // UART Global Variables
 char output[64];
 int bytesToSend;
+int setpoint;
 
 // Driver Handles - Global variables
 UART2_Handle uart;
@@ -220,6 +221,8 @@ return temperature;
  */
 void gpioButtonFxn0(uint_least8_t index)
 {
+
+    setpoint++;
     /* Toggle an LED */
     GPIO_toggle(CONFIG_GPIO_LED_0);
 }
@@ -233,7 +236,7 @@ void gpioButtonFxn0(uint_least8_t index)
  */
 void gpioButtonFxn1(uint_least8_t index)
 {
-    /* Toggle an LED */
+    setpoint--;
 
 }
 
@@ -284,7 +287,7 @@ void *mainThread(void *arg0)
     {
         int temperature = readTemp();
         //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
-        DISPLAY(snprintf(output, 64, "<%02d>\n\r", temperature))
+        DISPLAY(snprintf(output, 64, "<%02d,%02d>\n\r", temperature, setpoint))
 
         while (!TimerFlag){}
         TimerFlag=0;

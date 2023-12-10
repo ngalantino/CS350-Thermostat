@@ -1,10 +1,10 @@
 ******************************************************************************
             TI ARM Clang Linker PC v3.2.0                      
 ******************************************************************************
->> Linked Sat Dec  9 18:44:31 2023
+>> Linked Sat Dec  9 19:09:24 2023
 
 OUTPUT FILE NAME:   <gpiointerrupt_CC3220S_LAUNCHXL_nortos_ticlang.out>
-ENTRY POINT SYMBOL: "resetISR"  address: 200113e1
+ENTRY POINT SYMBOL: "resetISR"  address: 200113f1
 
 
 MEMORY CONFIGURATION
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   SRAM2                 20000000   00004000  0000130c  00002cf4  RW X
-  SRAM                  20004000   0003c000  0000f36d  0002cc93  RW X
+  SRAM                  20004000   0003c000  0000f3a5  0002cc5b  RW X
   LOG_DATA              90000000   00040000  00000000  00040000  R   
   LOG_PTR               94000008   00040000  00000000  00040000  R   
 
@@ -27,16 +27,16 @@ run origin  load origin   length   init length attrs members
   20004000    20004000    00000040   00000040    r-- .resetVecs
 20004040    20004040    00008000   00000000    rw-
   20004040    20004040    00008000   00000000    rw- .sysmem
-2000c040    2000c040    00005adc   00005adc    r-x
-  2000c040    2000c040    00005adc   00005adc    r-x .text
-20011c00    20011c00    00000a17   00000000    rw-
-  20011c00    20011c00    00000a17   00000000    rw- .bss
-20012620    20012620    000006b5   000006b5    r--
-  20012620    20012620    000006b5   000006b5    r-- .rodata
-20012cd8    20012cd8    0000068d   00000000    rw-
-  20012cd8    20012cd8    0000068d   00000000    rw- .data
-20013368    20013368    000000f8   000000f8    r--
-  20013368    20013368    000000f8   000000f8    r-- .cinit
+2000c040    2000c040    00005b0c   00005b0c    r-x
+  2000c040    2000c040    00005b0c   00005b0c    r-x .text
+20011c00    20011c00    00000a1b   00000000    rw-
+  20011c00    20011c00    00000a1b   00000000    rw- .bss
+20012620    20012620    000006b9   000006b9    r--
+  20012620    20012620    000006b9   000006b9    r-- .rodata
+20012ce0    20012ce0    0000068d   00000000    rw-
+  20012ce0    20012ce0    0000068d   00000000    rw- .data
+20013370    20013370    000000f8   000000f8    r--
+  20013370    20013370    000000f8   000000f8    r-- .cinit
 
 
 SECTION ALLOCATION MAP
@@ -44,7 +44,7 @@ SECTION ALLOCATION MAP
  output                                  attributes/
 section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
-.text      0    2000c040    00005adc     
+.text      0    2000c040    00005b0c     
                   2000c040    0000086c     libc.a : _printfi.c.obj (.text:__TI_printfi_nofloat)
                   2000c8ac    000004b8     driverlib.a : prcm.obj (.text.PRCMCC3200MCUInit)
                   2000cd64    000003e4     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_sleep)
@@ -70,304 +70,306 @@ section   page    origin      length       input sections
                   2000e648    000000c8     driverlib.a : interrupt.obj (.text.IntDisable)
                   2000e710    000000c8                 : interrupt.obj (.text.IntEnable)
                   2000e7d8    000000c4     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.UART2CC32XX_initHw)
-                  2000e89c    000000b8                      : UART2CC32XX.c.obj (.text.UART2Support_dmaStartTx)
-                  2000e954    000000b0     libclang_rt.builtins.a : udivmoddi4.S.obj (.text)
-                  2000ea04    000000ac     driverlib.a : gpio.obj (.text.GPIOIntTypeSet)
-                  2000eab0    000000ac     gpiointerrupt.o (.text.mainThread)
-                  2000eb5c    000000a4     driverlib.a : interrupt.obj (.text.IntPendSet)
-                  2000ec00    000000a2                 : pin.obj (.text.PinConfigSet)
-                  2000eca2    0000009c     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_completeTransfer)
-                  2000ed3e    00000098     driverlib.a : i2c.obj (.text.I2CMasterInitExpClk)
-                  2000edd6    00000002     nortos_cc32xx.a : PowerCC32XX_nortos.c.obj (.text.PowerCC32XX_initPolicy)
-                  2000edd8    00000098                     : SemaphoreP_nortos.c.obj (.text.SemaphoreP_pend)
-                  2000ee70    00000096     drivers_cc32xx.a : PowerCC32XX_ticlang.asm.obj (.text)
-                  2000ef06    00000092     driverlib.a : udma.obj (.text.uDMAChannelAttributeDisable)
-                  2000ef98    00000090     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_init)
-                  2000f028    00000090     gpiointerrupt.o (.text.readTemp)
-                  2000f0b8    0000008e     driverlib.a : prcm.obj (.text.PRCMSysResetCauseGet)
-                  2000f146    00000002     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_destruct)
-                  2000f148    00000088     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_configureWakeup)
-                  2000f1d0    0000007a                      : I2CCC32XX.c.obj (.text.I2CCC32XX_primeReadBurst)
-                  2000f24a    00000002                      : Timer.c.obj (.text.Timer_init)
-                  2000f24c    00000078                      : PowerCC32XX.c.obj (.text.Power_init)
-                  2000f2c4    00000074     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_construct)
-                  2000f338    00000074     driverlib.a : prcm.obj (.text.PRCMHibernateWakeUpGPIOSelect)
-                  2000f3ac    00000074                 : uart.obj (.text.UARTConfigSetExpClk)
-                  2000f420    00000070     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
-                  2000f490    0000006c     driverlib.a : pin.obj (.text.PinLockLevelSet)
-                  2000f4fc    0000006c     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_setDependency)
-                  2000f568    0000006c                      : UDMACC32XX.c.obj (.text.UDMACC32XX_open)
-                  2000f5d4    0000006c                      : GPIOCC32XX.c.obj (.text.powerNotifyFxn)
-                  2000f640    0000006c     libc.a : memory.c.obj (.text.split)
-                  2000f6ac    0000006a     driverlib.a : prcm.obj (.text.PRCMPeripheralReset)
-                  2000f716    00000002     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.UART2CC32XX_eventCallback)
-                  2000f718    00000068                      : I2CCC32XX.c.obj (.text.I2CCC32XX_initHw)
-                  2000f780    00000068     driverlib.a : interrupt.obj (.text.IntPendClear)
-                  2000f7e8    00000066     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_primeWriteBurst)
-                  2000f84e    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
-                  2000f850    00000060     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_write)
-                  2000f8b0    00000060                      : UART2CC32XX.c.obj (.text.UART2Support_dmaStopTx)
-                  2000f910    0000005c     driverlib.a : flash.obj (.text.FlashDisable)
-                  2000f96c    0000005c     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CSupport_primeTransfer)
-                  2000f9c8    0000005c     driverlib.a : prcm.obj (.text.PRCMHibernateWakeupSourceDisable)
-                  2000fa24    0000005c     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.TimerCC32XX_allocateTimerResource)
-                  2000fa80    0000005a     driverlib.a : prcm.obj (.text.PRCMPeripheralClkEnable)
-                  2000fada    00000002     libc.a : _lock.c.obj (.text._nop)
-                  2000fadc    00000058     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_startup)
-                  2000fb34    00000058     driverlib.a : interrupt.obj (.text.IntPrioritySet)
-                  2000fb8c    00000056                 : prcm.obj (.text.PRCMLPDSEnter)
-                  2000fbe2    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.busFaultHandler)
-                  2000fbe4    00000054     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_toggle)
-                  2000fc38    00000054                      : PowerCC32XX.c.obj (.text.PowerCC32XX_setParkState)
-                  2000fc8c    00000054                      : PowerCC32XX.c.obj (.text.Power_releaseDependency)
-                  2000fce0    00000050                      : GPIOCC32XX.c.obj (.text.GPIO_hwiIntFxn)
-                  2000fd30    00000050     driverlib.a : prcm.obj (.text.PRCMHibernateWakeupSourceEnable)
-                  2000fd80    00000050     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_construct)
-                  2000fdd0    0000004e     driverlib.a : udma.obj (.text.uDMAChannelAssign)
-                  2000fe1e    00000002     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.clkFxn)
-                  2000fe20    0000004c     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_setInterruptConfig)
-                  2000fe6c    0000004c     driverlib.a : prcm.obj (.text.PRCMLPDSRestoreInfoSet)
-                  2000feb8    0000004c     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.initHw)
-                  2000ff04    0000004a                      : UART2CC32XX.c.obj (.text.UART2Support_dmaStopRx)
-                  2000ff4e    0000004a                      : TimerCC32XX.c.obj (.text.getPrescaler)
-                  2000ff98    0000004a     driverlib.a : udma.obj (.text.uDMAChannelSizeGet)
-                  2000ffe2    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.defaultHandler)
-                  2000ffe4    00000048                     : ClockPSysTick_nortos.c.obj (.text.ClockP_sysTickHandler)
-                  2001002c    00000048     driverlib.a : prcm.obj (.text.PRCMIntEnable)
-                  20010074    00000048                 : prcm.obj (.text.PRCMPeripheralStatusGet)
-                  200100bc    00000048                 : pin.obj (.text.PinConfigGet)
-                  20010104    00000048     libclang_rt.builtins.a : fixdfsi.S.obj (.text.__fixdfsi)
-                  2001014c    00000046     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_fillTransmitFifo)
-                  20010192    00000046     driverlib.a : prcm.obj (.text.PRCMLPDSEnterKeepDebugIf)
-                  200101d8    00000046     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_put)
-                  2001021e    00000044     driverlib.a : gpio.obj (.text.GPIODirModeSet)
-                  20010262    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.faultISR)
-                  20010264    00000044     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_disableInt)
-                  200102a8    00000044                      : GPIOCC32XX.c.obj (.text.GPIO_enableInt)
-                  200102ec    00000044                      : PowerCC32XX.c.obj (.text.Power_releaseConstraint)
-                  20010330    00000044                      : Timer.c.obj (.text.Timer_start)
-                  20010374    00000044     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.addToList)
-                  200103b8    00000044     gpiointerrupt.o (.text.initTimer)
-                  200103fc    00000044     libc.a : snprintf.c.obj (.text.snprintf)
-                  20010440    00000042     driverlib.a : pin.obj (.text.PinModeSet)
-                  20010482    00000042                 : timer.obj (.text.TimerControlStall)
-                  200104c4    00000042     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.Timer_close)
-                  20010506    00000042     nortos_cc32xx.a : PowerCC32XX_nortos.c.obj (.text.getCountsRTC)
-                  20010548    00000040                     : SemaphoreP_nortos.c.obj (.text.SemaphoreP_post)
-                  20010588    00000040     drivers_cc32xx.a : Timer.c.obj (.text.Timer_stop)
-                  200105c8    00000040     libc.a : atoi.c.obj (.text.atoi)
-                  20010608    00000040     driverlib.a : udma.obj (.text.uDMAChannelControlSet)
-                  20010648    0000003e                 : pin.obj (.text.PinDirModeSet)
-                  20010686    00000002     gpiointerrupt.o (.text.gpioButtonFxn1)
-                  20010688    0000003c     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_stop)
-                  200106c4    0000003c     drivers_cc32xx.a : UDMACC32XX.c.obj (.text.UDMACC32XX_init)
-                  20010700    0000003a                      : TimerCC32XX.c.obj (.text.TimerSupport_timerEnable)
-                  2001073a    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.nmiISR)
-                  2001073c    00000038                     : ClockPSysTick_nortos.c.obj (.text.ClockP_destruct)
-                  20010774    00000038     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_setConstraint)
-                  200107ac    00000038                      : RingBuf.c.obj (.text.RingBuf_putAdvance)
-                  200107e4    00000038     nortos_cc32xx.a : SwiP_nortos.c.obj (.text.SwiP_restore)
-                  2001081c    00000038     drivers_cc32xx.a : UDMACC32XX.c.obj (.text.UDMACC32XX_close)
-                  20010854    00000038     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
-                  2001088c    00000036     driverlib.a : pin.obj (.text.PinLock)
-                  200108c2    00000036     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.TimerCC32XX_hwiIntFunction)
-                  200108f8    00000036     driverlib.a : uart.obj (.text.UARTCharPutNonBlocking)
-                  2001092e    00000002     --HOLE-- [fill = 0]
-                  20010930    00000034     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_start)
-                  20010964    00000034     driverlib.a : i2c.obj (.text.I2CFIFODataPutNonBlocking)
-                  20010998    00000034                 : pin.obj (.text.PinDirModeGet)
-                  200109cc    00000034                 : pin.obj (.text.PinModeGet)
-                  20010a00    00000034     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_parkPin)
-                  20010a34    00000034                      : TimerCC32XX.c.obj (.text.TimerCC32XX_freeTimerResource)
-                  20010a68    00000034                      : UART2.c.obj (.text.UART2_rxDisable)
-                  20010a9c    00000034     gpiointerrupt.o (.text.initUART)
-                  20010ad0    00000034     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.initVectors)
-                  20010b04    00000030                     : ClockPSysTick_nortos.c.obj (.text.ClockP_getTicksUntilInterrupt)
-                  20010b34    00000030     driverlib.a : i2c.obj (.text.I2CFIFODataGetNonBlocking)
-                  20010b64    00000030                 : prcm.obj (.text.PRCMLPDSIntervalSet)
-                  20010b94    00000030                 : prcm.obj (.text.PRCMSlowClkCtrFastGet)
-                  20010bc4    00000030                 : timer.obj (.text.TimerLoadSet)
-                  20010bf4    00000030                 : timer.obj (.text.TimerPrescaleSet)
-                  20010c24    00000030     libc.a : snprintf.c.obj (.text._outs)
-                  20010c54    00000030     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.notify)
-                  20010c84    0000002e     driverlib.a : gpio.obj (.text.GPIOIntStatus)
-                  20010cb2    0000002e     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_getConsume)
-                  20010ce0    0000002e                      : RingBuf.c.obj (.text.RingBuf_putPointer)
-                  20010d0e    0000002e     driverlib.a : uart.obj (.text.UARTDisable)
-                  20010d3c    0000002e     libclang_rt.builtins.a : floatsidf.S.obj (.text.__floatsidf)
-                  20010d6a    0000002c     driverlib.a : i2c.obj (.text.I2CMasterIntStatusEx)
-                  20010d96    0000002c     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.UART2CC32XX_getRxData)
-                  20010dc2    0000002a     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_create)
-                  20010dec    0000002a     driverlib.a : prcm.obj (.text.PRCMLPDSWakeUpGPIOSelect)
-                  20010e16    0000002a                 : prcm.obj (.text.PRCMPeripheralClkDisable)
-                  20010e40    0000002a                 : uart.obj (.text.UARTIntStatus)
-                  20010e6a    00000028                 : i2c.obj (.text.I2CMasterBusBusy)
-                  20010e92    00000028                 : i2c.obj (.text.I2CMasterSlaveAddrSet)
-                  20010eba    00000028                 : i2c.obj (.text.I2CTxFIFOConfigSet)
-                  20010ee2    00000028     drivers_cc32xx.a : I2C.c.obj (.text.I2C_cancel)
-                  20010f0a    00000028                      : List.c.obj (.text.List_remove)
-                  20010f32    00000028     driverlib.a : prcm.obj (.text.PRCMSRAMRetentionEnable)
-                  20010f5a    00000002     --HOLE-- [fill = 0]
-                  20010f5c    00000028     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_getParkState)
-                  20010f84    00000028                      : TimerCC32XX.c.obj (.text.TimerSupport_timerDisable)
-                  20010fac    00000028     libc.a : memory.c.obj (.text.free_list_insert)
-                  20010fd4    00000024     driverlib.a : i2c.obj (.text.I2CRxFIFOConfigSet)
-                  20010ff8    00000024                 : interrupt.obj (.text.IntUnregister)
-                  2001101c    00000024     drivers_cc32xx.a : List.c.obj (.text.List_put)
-                  20011040    00000024     driverlib.a : prcm.obj (.text.PRCMLPDSWakeupSourceEnable)
-                  20011064    00000024     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_restoreParkState)
-                  20011088    00000024                      : PowerCC32XX.c.obj (.text.PowerCC32XX_restoreParkedPin)
-                  200110ac    00000024                      : PowerCC32XX.c.obj (.text.Power_registerNotify)
-                  200110d0    00000024                      : UART2CC32XX.c.obj (.text.UART2Support_disableRx)
-                  200110f4    00000024     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
-                  20011118    00000022     driverlib.a : gpio.obj (.text.GPIOPinWrite)
-                  2001113a    00000022                 : pin.obj (.text.PinUnlock)
-                  2001115c    00000022     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_getPointer)
-                  2001117e    00000022                      : UART2CC32XX.c.obj (.text.UART2Support_sendData)
-                  200111a0    00000020     driverlib.a : interrupt.obj (.text.IntRegister)
-                  200111c0    00000020                 : pin.obj (.text.PinTypeI2C)
-                  200111e0    00000020     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_reset)
-                  20011200    00000020                      : PowerCC32XX.c.obj (.text.Power_unregisterNotify)
-                  20011220    00000020     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_constructBinary)
-                  20011240    00000020                     : SemaphoreP_nortos.c.obj (.text.SemaphoreP_createBinary)
-                  20011260    00000020     driverlib.a : timer.obj (.text.TimerDisable)
-                  20011280    0000001e                 : pin.obj (.text.PinTypeUART)
-                  2001129e    0000001e     drivers_cc32xx.a : UART2.c.obj (.text.UART2_writeTimeout)
-                  200112bc    0000001e     driverlib.a : uart.obj (.text.UARTEnable)
-                  200112da    0000001e     libc.a : memccpy.c.obj (.text.memccpy)
-                  200112f8    0000001e     driverlib.a : udma.obj (.text.uDMAChannelDisable)
-                  20011316    0000001e                 : udma.obj (.text.uDMAChannelEnable)
-                  20011334    0000001e                 : udma.obj (.text.uDMAChannelIsEnabled)
-                  20011352    00000002     --HOLE-- [fill = 0]
-                  20011354    0000001c     drivers_cc32xx.a : GPIO.c.obj (.text.GPIO_setCallback)
-                  20011370    0000001c     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_dispatch)
-                  2001138c    0000001c                     : SwiP_nortos.c.obj (.text.SwiP_disable)
-                  200113a8    0000001c     libc.a : memory.c.obj (.text.free_list_remove)
-                  200113c4    0000001c     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.getPowerMgrId)
-                  200113e0    0000001c     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.resetISR)
-                  200113fc    0000001a     driverlib.a : gpio.obj (.text.GPIOIntDisable)
-                  20011416    0000001a                 : prcm.obj (.text.PRCMHIBRegRead)
-                  20011430    0000001a                 : prcm.obj (.text.PRCMHIBRegWrite)
-                  2001144a    0000001a                 : prcm.obj (.text.PRCMLPDSWakeupSourceDisable)
-                  20011464    0000001a                 : pin.obj (.text.PinToPadGet)
-                  2001147e    0000001a                 : timer.obj (.text.TimerEnable)
-                  20011498    0000001a                 : uart.obj (.text.UARTFlowControlSet)
-                  200114b2    00000018                 : gpio.obj (.text.GPIOIntEnable)
-                  200114ca    00000018                 : gpio.obj (.text.GPIOPinRead)
-                  200114e2    00000018     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_create)
-                  200114fa    00000018     libc.a : snprintf.c.obj (.text._outc)
-                  20011512    00000016     ti_drivers_config.o (.text.Board_init)
-                  20011528    00000016     driverlib.a : i2c.obj (.text.I2CMasterBurstLengthSet)
-                  2001153e    00000016                 : i2c.obj (.text.I2CMasterIntDisableEx)
-                  20011554    00000016                 : i2c.obj (.text.I2CRxFIFOFlush)
-                  2001156a    00000016                 : i2c.obj (.text.I2CTxFIFOFlush)
-                  20011580    00000016                 : systick.obj (.text.SysTickPeriodSet)
-                  20011596    00000016                 : timer.obj (.text.TimerIntDisable)
-                  200115ac    00000016                 : uart.obj (.text.UARTCharsAvail)
-                  200115c2    00000016                 : uart.obj (.text.UARTDMADisable)
-                  200115d8    00000016                 : uart.obj (.text.UARTFIFOLevelSet)
-                  200115ee    00000016                 : uart.obj (.text.UARTIntDisable)
-                  20011604    00000014                 : cpu.obj (.text.CPUcpsid)
-                  20011618    00000014                 : cpu.obj (.text.CPUcpsie)
-                  2001162c    00000014     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_destruct)
-                  20011640    00000014     driverlib.a : i2c.obj (.text.I2CMasterIntEnableEx)
-                  20011654    00000014                 : interrupt.obj (.text.IntVTableBaseSet)
-                  20011668    00000014     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_disablePolicy)
-                  2001167c    00000014                      : PowerCC32XX.c.obj (.text.Power_getTransitionLatency)
-                  20011690    00000014                      : PowerCC32XX.c.obj (.text.Power_idleFunc)
-                  200116a4    00000014     driverlib.a : timer.obj (.text.TimerIntEnable)
-                  200116b8    00000014                 : uart.obj (.text.UARTDMAEnable)
-                  200116cc    00000014                 : uart.obj (.text.UARTIntEnable)
-                  200116e0    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
-                  200116f4    00000014     driverlib.a : udma.obj (.text.uDMAControlBaseSet)
-                  20011708    00000014                 : udma.obj (.text.uDMAIntClear)
-                  2001171c    00000012     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_add)
-                  2001172e    00000012     driverlib.a : gpio.obj (.text.GPIOIntClear)
-                  20011740    00000012     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_Params_init)
-                  20011752    00000012                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_delete)
-                  20011764    00000012     driverlib.a : i2c.obj (.text.I2CMasterDisable)
-                  20011776    00000012                 : i2c.obj (.text.I2CMasterEnable)
-                  20011788    00000012     drivers_cc32xx.a : I2C.c.obj (.text.I2C_transfer)
-                  2001179a    00000012     driverlib.a : systick.obj (.text.SysTickEnable)
-                  200117ac    00000012                 : systick.obj (.text.SysTickIntDisable)
-                  200117be    00000012                 : systick.obj (.text.SysTickIntEnable)
-                  200117d0    00000012     drivers_cc32xx.a : UDMACC32XX.c.obj (.text.postNotifyFxn)
-                  200117e2    00000012     libc.a : memcpy_t2.S.obj (.text:TI_memcpy_small)
-                  200117f4    00000010     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_getCpuFreq)
-                  20011804    00000010                     : ClockPSysTick_nortos.c.obj (.text.ClockP_getSystemTicks)
-                  20011814    00000010                     : ClockPSysTick_nortos.c.obj (.text.ClockP_setTicks)
-                  20011824    00000010                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_inISR)
-                  20011834    00000010     driverlib.a : i2c.obj (.text.I2CMasterControl)
-                  20011844    00000010                 : i2c.obj (.text.I2CMasterIntClearEx)
-                  20011854    00000010                 : i2c.obj (.text.I2CMasterTimeoutSet)
-                  20011864    00000010     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_enablePolicy)
-                  20011874    00000010                      : RingBuf.c.obj (.text.RingBuf_construct)
-                  20011884    00000010     driverlib.a : timer.obj (.text.TimerIntClear)
-                  20011894    00000010     drivers_cc32xx.a : Timer.c.obj (.text.Timer_Params_init)
-                  200118a4    00000010                      : UART2CC32XX.c.obj (.text.UART2Support_txDone)
-                  200118b4    00000010     driverlib.a : uart.obj (.text.UARTBusy)
-                  200118c4    00000010                 : uart.obj (.text.UARTIntClear)
-                  200118d4    00000010                 : uart.obj (.text.UARTRxErrorGet)
-                  200118e4    00000010     main_nortos.o (.text.main)
-                  200118f4    00000010     libc.a : wcslen.c.obj (.text.wcslen)
-                  20011904    00000010            : copy_zero_init.c.obj (.text:decompress:ZI)
-                  20011914    0000000e     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_interruptsEnabled)
-                  20011922    0000000e     driverlib.a : i2c.obj (.text.I2CFIFOStatus)
-                  20011930    0000000e     drivers_cc32xx.a : UART2.c.obj (.text.UART2_write)
-                  2001193e    0000000e     libc.a : _printfi.c.obj (.text.strlen)
-                  2001194c    0000000e     driverlib.a : udma.obj (.text.uDMAEnable)
-                  2001195a    0000000e                 : udma.obj (.text.uDMAErrorStatusClear)
-                  20011968    0000000e     libc.a : memset_t2.S.obj (.text:TI_memset_small)
-                  20011976    0000000e            : copy_decompress_none.c.obj (.text:decompress:none)
-                  20011984    0000000c     driverlib.a : cpu.obj (.text.CPUwfi)
-                  20011990    0000000c     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_postNotify)
-                  2001199c    0000000c                      : I2C.c.obj (.text.I2C_Params_init)
-                  200119a8    0000000c                      : I2CCC32XX.c.obj (.text.OUTLINED_FUNCTION_0)
-                  200119b4    0000000c                      : UART2CC32XX.c.obj (.text.OUTLINED_FUNCTION_0)
-                  200119c0    0000000c     gpiointerrupt.o (.text.OUTLINED_FUNCTION_0)
-                  200119cc    0000000c     driverlib.a : prcm.obj (.text.PRCMLPDSWakeupCauseGet)
-                  200119d8    0000000c     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_getConstraintMask)
-                  200119e4    0000000c                      : UART2CC32XX.c.obj (.text.UART2CC32XX_postNotifyFxn)
-                  200119f0    0000000c                      : UART2CC32XX.c.obj (.text.UART2Support_disableTx)
-                  200119fc    0000000c                      : UART2CC32XX.c.obj (.text.UART2Support_enableTx)
-                  20011a08    0000000c                      : UART2.c.obj (.text.UART2_Params_init)
-                  20011a14    0000000c                      : TimerCC32XX.c.obj (.text.postNotifyFxn)
-                  20011a20    0000000c     gpiointerrupt.o (.text.timerCallback)
-                  20011a2c    0000000c     driverlib.a : udma.obj (.text.uDMAErrorStatusGet)
-                  20011a38    0000000a                 : cpu.obj (.text.CPUprimask)
-                  20011a42    0000000a     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_isActive)
-                  20011a4c    0000000a     driverlib.a : interrupt.obj (.text.IntMasterDisable)
-                  20011a56    0000000a                 : interrupt.obj (.text.IntMasterEnable)
-                  20011a60    0000000a     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.OUTLINED_FUNCTION_1)
-                  20011a6a    0000000a                      : UART2CC32XX.c.obj (.text.OUTLINED_FUNCTION_2)
-                  20011a74    0000000a     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
-                  20011a7e    0000000a     ti_drivers_config.o (.text.dmaErrorFxn)
-                  20011a88    00000008     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_disable)
-                  20011a90    00000008                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_restore)
-                  20011a98    00000008     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_blockingCallback)
-                  20011aa0    00000008                      : I2CCC32XX.c.obj (.text.I2CSupport_controllerFinish)
-                  20011aa8    00000008     driverlib.a : prcm.obj (.text.PRCMSleepEnter)
-                  20011ab0    00000008                 : utils.obj (.text.UtilsDelay)
-                  20011ab8    00000008     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
-                  20011ac0    00000008     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
-                  20011ac8    00000008     libc.a : memory.c.obj (.text.malloc)
-                  20011ad0    00000006     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CSupport_powerRelConstraint)
-                  20011ad6    00000006                      : I2CCC32XX.c.obj (.text.I2CSupport_powerSetConstraint)
-                  20011adc    00000006                      : UART2CC32XX.c.obj (.text.UART2Support_powerRelConstraint)
-                  20011ae2    00000006     gpiointerrupt.o (.text.gpioButtonFxn0)
-                  20011ae8    00000004     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_doTick)
-                  20011aec    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_clearInterrupt)
-                  20011af0    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_disableInterrupt)
-                  20011af4    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_enable)
-                  20011af8    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_enableInterrupt)
-                  20011afc    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_post)
-                  20011b00    00000004     driverlib.a : interrupt.obj (.text.IntDefaultHandler)
-                  20011b04    00000004     nortos_cc32xx.a : NoRTOS.c.obj (.text.NoRTOS_start)
-                  20011b08    00000004     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_getCount)
-                  20011b0c    00000004     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_delete)
-                  20011b10    00000004     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
-                  20011b14    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
-                  20011b18    00000004            : exit.c.obj (.text:abort)
+                  2000e89c    000000bc     gpiointerrupt.o (.text.mainThread)
+                  2000e958    000000b8     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.UART2Support_dmaStartTx)
+                  2000ea10    000000b0     libclang_rt.builtins.a : udivmoddi4.S.obj (.text)
+                  2000eac0    000000ac     driverlib.a : gpio.obj (.text.GPIOIntTypeSet)
+                  2000eb6c    000000a4                 : interrupt.obj (.text.IntPendSet)
+                  2000ec10    000000a2                 : pin.obj (.text.PinConfigSet)
+                  2000ecb2    0000009c     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_completeTransfer)
+                  2000ed4e    00000098     driverlib.a : i2c.obj (.text.I2CMasterInitExpClk)
+                  2000ede6    00000002     nortos_cc32xx.a : PowerCC32XX_nortos.c.obj (.text.PowerCC32XX_initPolicy)
+                  2000ede8    00000098                     : SemaphoreP_nortos.c.obj (.text.SemaphoreP_pend)
+                  2000ee80    00000096     drivers_cc32xx.a : PowerCC32XX_ticlang.asm.obj (.text)
+                  2000ef16    00000092     driverlib.a : udma.obj (.text.uDMAChannelAttributeDisable)
+                  2000efa8    00000090     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_init)
+                  2000f038    00000090     gpiointerrupt.o (.text.readTemp)
+                  2000f0c8    0000008e     driverlib.a : prcm.obj (.text.PRCMSysResetCauseGet)
+                  2000f156    00000002     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_destruct)
+                  2000f158    00000088     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_configureWakeup)
+                  2000f1e0    0000007a                      : I2CCC32XX.c.obj (.text.I2CCC32XX_primeReadBurst)
+                  2000f25a    00000002                      : Timer.c.obj (.text.Timer_init)
+                  2000f25c    00000078                      : PowerCC32XX.c.obj (.text.Power_init)
+                  2000f2d4    00000074     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_construct)
+                  2000f348    00000074     driverlib.a : prcm.obj (.text.PRCMHibernateWakeUpGPIOSelect)
+                  2000f3bc    00000074                 : uart.obj (.text.UARTConfigSetExpClk)
+                  2000f430    00000070     libc.a : copy_decompress_lzss.c.obj (.text:decompress:lzss)
+                  2000f4a0    0000006c     driverlib.a : pin.obj (.text.PinLockLevelSet)
+                  2000f50c    0000006c     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_setDependency)
+                  2000f578    0000006c                      : UDMACC32XX.c.obj (.text.UDMACC32XX_open)
+                  2000f5e4    0000006c                      : GPIOCC32XX.c.obj (.text.powerNotifyFxn)
+                  2000f650    0000006c     libc.a : memory.c.obj (.text.split)
+                  2000f6bc    0000006a     driverlib.a : prcm.obj (.text.PRCMPeripheralReset)
+                  2000f726    00000002     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.UART2CC32XX_eventCallback)
+                  2000f728    00000068                      : I2CCC32XX.c.obj (.text.I2CCC32XX_initHw)
+                  2000f790    00000068     driverlib.a : interrupt.obj (.text.IntPendClear)
+                  2000f7f8    00000066     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_primeWriteBurst)
+                  2000f85e    00000002     libclang_rt.builtins.a : aeabi_div0.c.obj (.text.__aeabi_ldiv0)
+                  2000f860    00000060     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_write)
+                  2000f8c0    00000060                      : UART2CC32XX.c.obj (.text.UART2Support_dmaStopTx)
+                  2000f920    0000005c     driverlib.a : flash.obj (.text.FlashDisable)
+                  2000f97c    0000005c     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CSupport_primeTransfer)
+                  2000f9d8    0000005c     driverlib.a : prcm.obj (.text.PRCMHibernateWakeupSourceDisable)
+                  2000fa34    0000005c     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.TimerCC32XX_allocateTimerResource)
+                  2000fa90    0000005a     driverlib.a : prcm.obj (.text.PRCMPeripheralClkEnable)
+                  2000faea    00000002     libc.a : _lock.c.obj (.text._nop)
+                  2000faec    00000058     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_startup)
+                  2000fb44    00000058     driverlib.a : interrupt.obj (.text.IntPrioritySet)
+                  2000fb9c    00000056                 : prcm.obj (.text.PRCMLPDSEnter)
+                  2000fbf2    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.busFaultHandler)
+                  2000fbf4    00000054     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_toggle)
+                  2000fc48    00000054                      : PowerCC32XX.c.obj (.text.PowerCC32XX_setParkState)
+                  2000fc9c    00000054                      : PowerCC32XX.c.obj (.text.Power_releaseDependency)
+                  2000fcf0    00000050                      : GPIOCC32XX.c.obj (.text.GPIO_hwiIntFxn)
+                  2000fd40    00000050     driverlib.a : prcm.obj (.text.PRCMHibernateWakeupSourceEnable)
+                  2000fd90    00000050     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_construct)
+                  2000fde0    0000004e     driverlib.a : udma.obj (.text.uDMAChannelAssign)
+                  2000fe2e    00000002     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.clkFxn)
+                  2000fe30    0000004c     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_setInterruptConfig)
+                  2000fe7c    0000004c     driverlib.a : prcm.obj (.text.PRCMLPDSRestoreInfoSet)
+                  2000fec8    0000004c     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.initHw)
+                  2000ff14    0000004a                      : UART2CC32XX.c.obj (.text.UART2Support_dmaStopRx)
+                  2000ff5e    0000004a                      : TimerCC32XX.c.obj (.text.getPrescaler)
+                  2000ffa8    0000004a     driverlib.a : udma.obj (.text.uDMAChannelSizeGet)
+                  2000fff2    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.defaultHandler)
+                  2000fff4    00000048                     : ClockPSysTick_nortos.c.obj (.text.ClockP_sysTickHandler)
+                  2001003c    00000048     driverlib.a : prcm.obj (.text.PRCMIntEnable)
+                  20010084    00000048                 : prcm.obj (.text.PRCMPeripheralStatusGet)
+                  200100cc    00000048                 : pin.obj (.text.PinConfigGet)
+                  20010114    00000048     libclang_rt.builtins.a : fixdfsi.S.obj (.text.__fixdfsi)
+                  2001015c    00000046     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_fillTransmitFifo)
+                  200101a2    00000046     driverlib.a : prcm.obj (.text.PRCMLPDSEnterKeepDebugIf)
+                  200101e8    00000046     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_put)
+                  2001022e    00000044     driverlib.a : gpio.obj (.text.GPIODirModeSet)
+                  20010272    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.faultISR)
+                  20010274    00000044     drivers_cc32xx.a : GPIOCC32XX.c.obj (.text.GPIO_disableInt)
+                  200102b8    00000044                      : GPIOCC32XX.c.obj (.text.GPIO_enableInt)
+                  200102fc    00000044                      : PowerCC32XX.c.obj (.text.Power_releaseConstraint)
+                  20010340    00000044                      : Timer.c.obj (.text.Timer_start)
+                  20010384    00000044     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.addToList)
+                  200103c8    00000044     gpiointerrupt.o (.text.initTimer)
+                  2001040c    00000044     libc.a : snprintf.c.obj (.text.snprintf)
+                  20010450    00000042     driverlib.a : pin.obj (.text.PinModeSet)
+                  20010492    00000042                 : timer.obj (.text.TimerControlStall)
+                  200104d4    00000042     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.Timer_close)
+                  20010516    00000042     nortos_cc32xx.a : PowerCC32XX_nortos.c.obj (.text.getCountsRTC)
+                  20010558    00000040                     : SemaphoreP_nortos.c.obj (.text.SemaphoreP_post)
+                  20010598    00000040     drivers_cc32xx.a : Timer.c.obj (.text.Timer_stop)
+                  200105d8    00000040     libc.a : atoi.c.obj (.text.atoi)
+                  20010618    00000040     driverlib.a : udma.obj (.text.uDMAChannelControlSet)
+                  20010658    0000003e                 : pin.obj (.text.PinDirModeSet)
+                  20010696    00000002     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.nmiISR)
+                  20010698    0000003c                     : ClockPSysTick_nortos.c.obj (.text.ClockP_stop)
+                  200106d4    0000003c     drivers_cc32xx.a : UDMACC32XX.c.obj (.text.UDMACC32XX_init)
+                  20010710    0000003a                      : TimerCC32XX.c.obj (.text.TimerSupport_timerEnable)
+                  2001074a    00000002     --HOLE-- [fill = 0]
+                  2001074c    00000038     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_destruct)
+                  20010784    00000038     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_setConstraint)
+                  200107bc    00000038                      : RingBuf.c.obj (.text.RingBuf_putAdvance)
+                  200107f4    00000038     nortos_cc32xx.a : SwiP_nortos.c.obj (.text.SwiP_restore)
+                  2001082c    00000038     drivers_cc32xx.a : UDMACC32XX.c.obj (.text.UDMACC32XX_close)
+                  20010864    00000038     libc.a : autoinit.c.obj (.text:__TI_auto_init_nobinit_nopinit)
+                  2001089c    00000036     driverlib.a : pin.obj (.text.PinLock)
+                  200108d2    00000036     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.TimerCC32XX_hwiIntFunction)
+                  20010908    00000036     driverlib.a : uart.obj (.text.UARTCharPutNonBlocking)
+                  2001093e    00000002     --HOLE-- [fill = 0]
+                  20010940    00000034     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_start)
+                  20010974    00000034     driverlib.a : i2c.obj (.text.I2CFIFODataPutNonBlocking)
+                  200109a8    00000034                 : pin.obj (.text.PinDirModeGet)
+                  200109dc    00000034                 : pin.obj (.text.PinModeGet)
+                  20010a10    00000034     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_parkPin)
+                  20010a44    00000034                      : TimerCC32XX.c.obj (.text.TimerCC32XX_freeTimerResource)
+                  20010a78    00000034                      : UART2.c.obj (.text.UART2_rxDisable)
+                  20010aac    00000034     gpiointerrupt.o (.text.initUART)
+                  20010ae0    00000034     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.initVectors)
+                  20010b14    00000030                     : ClockPSysTick_nortos.c.obj (.text.ClockP_getTicksUntilInterrupt)
+                  20010b44    00000030     driverlib.a : i2c.obj (.text.I2CFIFODataGetNonBlocking)
+                  20010b74    00000030                 : prcm.obj (.text.PRCMLPDSIntervalSet)
+                  20010ba4    00000030                 : prcm.obj (.text.PRCMSlowClkCtrFastGet)
+                  20010bd4    00000030                 : timer.obj (.text.TimerLoadSet)
+                  20010c04    00000030                 : timer.obj (.text.TimerPrescaleSet)
+                  20010c34    00000030     libc.a : snprintf.c.obj (.text._outs)
+                  20010c64    00000030     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.notify)
+                  20010c94    0000002e     driverlib.a : gpio.obj (.text.GPIOIntStatus)
+                  20010cc2    0000002e     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_getConsume)
+                  20010cf0    0000002e                      : RingBuf.c.obj (.text.RingBuf_putPointer)
+                  20010d1e    0000002e     driverlib.a : uart.obj (.text.UARTDisable)
+                  20010d4c    0000002e     libclang_rt.builtins.a : floatsidf.S.obj (.text.__floatsidf)
+                  20010d7a    0000002c     driverlib.a : i2c.obj (.text.I2CMasterIntStatusEx)
+                  20010da6    0000002c     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.UART2CC32XX_getRxData)
+                  20010dd2    0000002a     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_create)
+                  20010dfc    0000002a     driverlib.a : prcm.obj (.text.PRCMLPDSWakeUpGPIOSelect)
+                  20010e26    0000002a                 : prcm.obj (.text.PRCMPeripheralClkDisable)
+                  20010e50    0000002a                 : uart.obj (.text.UARTIntStatus)
+                  20010e7a    00000028                 : i2c.obj (.text.I2CMasterBusBusy)
+                  20010ea2    00000028                 : i2c.obj (.text.I2CMasterSlaveAddrSet)
+                  20010eca    00000028                 : i2c.obj (.text.I2CTxFIFOConfigSet)
+                  20010ef2    00000028     drivers_cc32xx.a : I2C.c.obj (.text.I2C_cancel)
+                  20010f1a    00000028                      : List.c.obj (.text.List_remove)
+                  20010f42    00000028     driverlib.a : prcm.obj (.text.PRCMSRAMRetentionEnable)
+                  20010f6a    00000002     --HOLE-- [fill = 0]
+                  20010f6c    00000028     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_getParkState)
+                  20010f94    00000028                      : TimerCC32XX.c.obj (.text.TimerSupport_timerDisable)
+                  20010fbc    00000028     libc.a : memory.c.obj (.text.free_list_insert)
+                  20010fe4    00000024     driverlib.a : i2c.obj (.text.I2CRxFIFOConfigSet)
+                  20011008    00000024                 : interrupt.obj (.text.IntUnregister)
+                  2001102c    00000024     drivers_cc32xx.a : List.c.obj (.text.List_put)
+                  20011050    00000024     driverlib.a : prcm.obj (.text.PRCMLPDSWakeupSourceEnable)
+                  20011074    00000024     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_restoreParkState)
+                  20011098    00000024                      : PowerCC32XX.c.obj (.text.PowerCC32XX_restoreParkedPin)
+                  200110bc    00000024                      : PowerCC32XX.c.obj (.text.Power_registerNotify)
+                  200110e0    00000024                      : UART2CC32XX.c.obj (.text.UART2Support_disableRx)
+                  20011104    00000024     libc.a : boot_cortex_m.c.obj (.text:_c_int00_noargs)
+                  20011128    00000022     driverlib.a : gpio.obj (.text.GPIOPinWrite)
+                  2001114a    00000022                 : pin.obj (.text.PinUnlock)
+                  2001116c    00000022     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_getPointer)
+                  2001118e    00000022                      : UART2CC32XX.c.obj (.text.UART2Support_sendData)
+                  200111b0    00000020     driverlib.a : interrupt.obj (.text.IntRegister)
+                  200111d0    00000020                 : pin.obj (.text.PinTypeI2C)
+                  200111f0    00000020     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.PowerCC32XX_reset)
+                  20011210    00000020                      : PowerCC32XX.c.obj (.text.Power_unregisterNotify)
+                  20011230    00000020     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_constructBinary)
+                  20011250    00000020                     : SemaphoreP_nortos.c.obj (.text.SemaphoreP_createBinary)
+                  20011270    00000020     driverlib.a : timer.obj (.text.TimerDisable)
+                  20011290    0000001e                 : pin.obj (.text.PinTypeUART)
+                  200112ae    0000001e     drivers_cc32xx.a : UART2.c.obj (.text.UART2_writeTimeout)
+                  200112cc    0000001e     driverlib.a : uart.obj (.text.UARTEnable)
+                  200112ea    0000001e     libc.a : memccpy.c.obj (.text.memccpy)
+                  20011308    0000001e     driverlib.a : udma.obj (.text.uDMAChannelDisable)
+                  20011326    0000001e                 : udma.obj (.text.uDMAChannelEnable)
+                  20011344    0000001e                 : udma.obj (.text.uDMAChannelIsEnabled)
+                  20011362    00000002     --HOLE-- [fill = 0]
+                  20011364    0000001c     drivers_cc32xx.a : GPIO.c.obj (.text.GPIO_setCallback)
+                  20011380    0000001c     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_dispatch)
+                  2001139c    0000001c                     : SwiP_nortos.c.obj (.text.SwiP_disable)
+                  200113b8    0000001c     libc.a : memory.c.obj (.text.free_list_remove)
+                  200113d4    0000001c     drivers_cc32xx.a : TimerCC32XX.c.obj (.text.getPowerMgrId)
+                  200113f0    0000001c     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.text.resetISR)
+                  2001140c    0000001a     driverlib.a : gpio.obj (.text.GPIOIntDisable)
+                  20011426    0000001a                 : prcm.obj (.text.PRCMHIBRegRead)
+                  20011440    0000001a                 : prcm.obj (.text.PRCMHIBRegWrite)
+                  2001145a    0000001a                 : prcm.obj (.text.PRCMLPDSWakeupSourceDisable)
+                  20011474    0000001a                 : pin.obj (.text.PinToPadGet)
+                  2001148e    0000001a                 : timer.obj (.text.TimerEnable)
+                  200114a8    0000001a                 : uart.obj (.text.UARTFlowControlSet)
+                  200114c2    00000018                 : gpio.obj (.text.GPIOIntEnable)
+                  200114da    00000018                 : gpio.obj (.text.GPIOPinRead)
+                  200114f2    00000018     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_create)
+                  2001150a    00000018     libc.a : snprintf.c.obj (.text._outc)
+                  20011522    00000016     ti_drivers_config.o (.text.Board_init)
+                  20011538    00000016     driverlib.a : i2c.obj (.text.I2CMasterBurstLengthSet)
+                  2001154e    00000016                 : i2c.obj (.text.I2CMasterIntDisableEx)
+                  20011564    00000016                 : i2c.obj (.text.I2CRxFIFOFlush)
+                  2001157a    00000016                 : i2c.obj (.text.I2CTxFIFOFlush)
+                  20011590    00000016                 : systick.obj (.text.SysTickPeriodSet)
+                  200115a6    00000016                 : timer.obj (.text.TimerIntDisable)
+                  200115bc    00000016                 : uart.obj (.text.UARTCharsAvail)
+                  200115d2    00000016                 : uart.obj (.text.UARTDMADisable)
+                  200115e8    00000016                 : uart.obj (.text.UARTFIFOLevelSet)
+                  200115fe    00000016                 : uart.obj (.text.UARTIntDisable)
+                  20011614    00000014                 : cpu.obj (.text.CPUcpsid)
+                  20011628    00000014                 : cpu.obj (.text.CPUcpsie)
+                  2001163c    00000014     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_destruct)
+                  20011650    00000014     driverlib.a : i2c.obj (.text.I2CMasterIntEnableEx)
+                  20011664    00000014                 : interrupt.obj (.text.IntVTableBaseSet)
+                  20011678    00000014     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_disablePolicy)
+                  2001168c    00000014                      : PowerCC32XX.c.obj (.text.Power_getTransitionLatency)
+                  200116a0    00000014                      : PowerCC32XX.c.obj (.text.Power_idleFunc)
+                  200116b4    00000014     driverlib.a : timer.obj (.text.TimerIntEnable)
+                  200116c8    00000014                 : uart.obj (.text.UARTDMAEnable)
+                  200116dc    00000014                 : uart.obj (.text.UARTIntEnable)
+                  200116f0    00000014     libclang_rt.builtins.a : aeabi_uldivmod.S.obj (.text.__aeabi_uldivmod)
+                  20011704    00000014     gpiointerrupt.o (.text.gpioButtonFxn0)
+                  20011718    00000014     driverlib.a : udma.obj (.text.uDMAControlBaseSet)
+                  2001172c    00000014                 : udma.obj (.text.uDMAIntClear)
+                  20011740    00000012     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_add)
+                  20011752    00000012     driverlib.a : gpio.obj (.text.GPIOIntClear)
+                  20011764    00000012     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_Params_init)
+                  20011776    00000012                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_delete)
+                  20011788    00000012     driverlib.a : i2c.obj (.text.I2CMasterDisable)
+                  2001179a    00000012                 : i2c.obj (.text.I2CMasterEnable)
+                  200117ac    00000012     drivers_cc32xx.a : I2C.c.obj (.text.I2C_transfer)
+                  200117be    00000012     driverlib.a : systick.obj (.text.SysTickEnable)
+                  200117d0    00000012                 : systick.obj (.text.SysTickIntDisable)
+                  200117e2    00000012                 : systick.obj (.text.SysTickIntEnable)
+                  200117f4    00000012     drivers_cc32xx.a : UDMACC32XX.c.obj (.text.postNotifyFxn)
+                  20011806    00000012     libc.a : memcpy_t2.S.obj (.text:TI_memcpy_small)
+                  20011818    00000010     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_getCpuFreq)
+                  20011828    00000010                     : ClockPSysTick_nortos.c.obj (.text.ClockP_getSystemTicks)
+                  20011838    00000010                     : ClockPSysTick_nortos.c.obj (.text.ClockP_setTicks)
+                  20011848    00000010                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_inISR)
+                  20011858    00000010     driverlib.a : i2c.obj (.text.I2CMasterControl)
+                  20011868    00000010                 : i2c.obj (.text.I2CMasterIntClearEx)
+                  20011878    00000010                 : i2c.obj (.text.I2CMasterTimeoutSet)
+                  20011888    00000010     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_enablePolicy)
+                  20011898    00000010                      : RingBuf.c.obj (.text.RingBuf_construct)
+                  200118a8    00000010     driverlib.a : timer.obj (.text.TimerIntClear)
+                  200118b8    00000010     drivers_cc32xx.a : Timer.c.obj (.text.Timer_Params_init)
+                  200118c8    00000010                      : UART2CC32XX.c.obj (.text.UART2Support_txDone)
+                  200118d8    00000010     driverlib.a : uart.obj (.text.UARTBusy)
+                  200118e8    00000010                 : uart.obj (.text.UARTIntClear)
+                  200118f8    00000010                 : uart.obj (.text.UARTRxErrorGet)
+                  20011908    00000010     gpiointerrupt.o (.text.gpioButtonFxn1)
+                  20011918    00000010     main_nortos.o (.text.main)
+                  20011928    00000010     libc.a : wcslen.c.obj (.text.wcslen)
+                  20011938    00000010            : copy_zero_init.c.obj (.text:decompress:ZI)
+                  20011948    0000000e     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_interruptsEnabled)
+                  20011956    0000000e     driverlib.a : i2c.obj (.text.I2CFIFOStatus)
+                  20011964    0000000e     drivers_cc32xx.a : UART2.c.obj (.text.UART2_write)
+                  20011972    0000000e     libc.a : _printfi.c.obj (.text.strlen)
+                  20011980    0000000e     driverlib.a : udma.obj (.text.uDMAEnable)
+                  2001198e    0000000e                 : udma.obj (.text.uDMAErrorStatusClear)
+                  2001199c    0000000e     libc.a : memset_t2.S.obj (.text:TI_memset_small)
+                  200119aa    0000000e            : copy_decompress_none.c.obj (.text:decompress:none)
+                  200119b8    0000000c     driverlib.a : cpu.obj (.text.CPUwfi)
+                  200119c4    0000000c     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_postNotify)
+                  200119d0    0000000c                      : I2C.c.obj (.text.I2C_Params_init)
+                  200119dc    0000000c                      : I2CCC32XX.c.obj (.text.OUTLINED_FUNCTION_0)
+                  200119e8    0000000c                      : UART2CC32XX.c.obj (.text.OUTLINED_FUNCTION_0)
+                  200119f4    0000000c     gpiointerrupt.o (.text.OUTLINED_FUNCTION_0)
+                  20011a00    0000000c     driverlib.a : prcm.obj (.text.PRCMLPDSWakeupCauseGet)
+                  20011a0c    0000000c     drivers_cc32xx.a : PowerCC32XX.c.obj (.text.Power_getConstraintMask)
+                  20011a18    0000000c                      : UART2CC32XX.c.obj (.text.UART2CC32XX_postNotifyFxn)
+                  20011a24    0000000c                      : UART2CC32XX.c.obj (.text.UART2Support_disableTx)
+                  20011a30    0000000c                      : UART2CC32XX.c.obj (.text.UART2Support_enableTx)
+                  20011a3c    0000000c                      : UART2.c.obj (.text.UART2_Params_init)
+                  20011a48    0000000c                      : TimerCC32XX.c.obj (.text.postNotifyFxn)
+                  20011a54    0000000c     gpiointerrupt.o (.text.timerCallback)
+                  20011a60    0000000c     driverlib.a : udma.obj (.text.uDMAErrorStatusGet)
+                  20011a6c    0000000a                 : cpu.obj (.text.CPUprimask)
+                  20011a76    0000000a     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_isActive)
+                  20011a80    0000000a     driverlib.a : interrupt.obj (.text.IntMasterDisable)
+                  20011a8a    0000000a                 : interrupt.obj (.text.IntMasterEnable)
+                  20011a94    0000000a     drivers_cc32xx.a : UART2CC32XX.c.obj (.text.OUTLINED_FUNCTION_1)
+                  20011a9e    0000000a                      : UART2CC32XX.c.obj (.text.OUTLINED_FUNCTION_2)
+                  20011aa8    0000000a     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memset)
+                  20011ab2    0000000a     ti_drivers_config.o (.text.dmaErrorFxn)
+                  20011abc    00000008     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.text.HwiP_disable)
+                  20011ac4    00000008                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_restore)
+                  20011acc    00000008     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CCC32XX_blockingCallback)
+                  20011ad4    00000008                      : I2CCC32XX.c.obj (.text.I2CSupport_controllerFinish)
+                  20011adc    00000008     driverlib.a : prcm.obj (.text.PRCMSleepEnter)
+                  20011ae4    00000008                 : utils.obj (.text.UtilsDelay)
+                  20011aec    00000008     libc.a : aeabi_portable.c.obj (.text.__aeabi_errno_addr)
+                  20011af4    00000008     libclang_rt.builtins.a : aeabi_memset.S.obj (.text.__aeabi_memclr)
+                  20011afc    00000008     libc.a : memory.c.obj (.text.malloc)
+                  20011b04    00000006     drivers_cc32xx.a : I2CCC32XX.c.obj (.text.I2CSupport_powerRelConstraint)
+                  20011b0a    00000006                      : I2CCC32XX.c.obj (.text.I2CSupport_powerSetConstraint)
+                  20011b10    00000006                      : UART2CC32XX.c.obj (.text.UART2Support_powerRelConstraint)
+                  20011b16    00000004     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.text.ClockP_doTick)
+                  20011b1a    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_clearInterrupt)
+                  20011b1e    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_disableInterrupt)
+                  20011b22    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_enable)
+                  20011b26    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_enableInterrupt)
+                  20011b2a    00000004                     : HwiPCC32XX_nortos.c.obj (.text.HwiP_post)
+                  20011b2e    00000004     driverlib.a : interrupt.obj (.text.IntDefaultHandler)
+                  20011b32    00000004     nortos_cc32xx.a : NoRTOS.c.obj (.text.NoRTOS_start)
+                  20011b36    00000004     drivers_cc32xx.a : RingBuf.c.obj (.text.RingBuf_getCount)
+                  20011b3a    00000004     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.text.SemaphoreP_delete)
+                  20011b3e    00000002     --HOLE-- [fill = 0]
+                  20011b40    00000004     libclang_rt.builtins.a : aeabi_memcpy.S.obj (.text.__aeabi_memcpy)
+                  20011b44    00000004     libc.a : pre_init.c.obj (.text._system_pre_init)
+                  20011b48    00000004            : exit.c.obj (.text:abort)
 
 .ramVecs   0    20000000    0000030c     NOLOAD SECTION
                   20000000    0000030c     nortos_cc32xx.a : startup_cc32xx_ticlang.c.obj (.ramVecs)
@@ -384,7 +386,7 @@ section   page    origin      length       input sections
                   20004040    00000010     libc.a : memory.c.obj (.sysmem)
                   20004050    00007ff0     --HOLE--
 
-.bss       0    20011c00    00000a17     UNINITIALIZED
+.bss       0    20011c00    00000a1b     UNINITIALIZED
                   20011c00    00000400     ti_drivers_config.o (.bss.dmaControlTable)
                   20012000    00000178     (.common:uart2CC32XXObjects0)
                   20012178    0000012c     (.common:PowerCC32XX_contextSave)
@@ -404,12 +406,13 @@ section   page    origin      length       input sections
                   20012600    00000004     drivers_cc32xx.a : TimerCC32XX.c.obj (.bss.timerState.0)
                   20012604    00000004     (.common:bytesToSend)
                   20012608    00000004     (.common:i2c)
-                  2001260c    00000004     (.common:timer0)
-                  20012610    00000004     (.common:uart)
-                  20012614    00000002     (.common:rxBuffer)
-                  20012616    00000001     (.common:txBuffer)
+                  2001260c    00000004     (.common:setpoint)
+                  20012610    00000004     (.common:timer0)
+                  20012614    00000004     (.common:uart)
+                  20012618    00000002     (.common:rxBuffer)
+                  2001261a    00000001     (.common:txBuffer)
 
-.rodata    0    20012620    000006b5     
+.rodata    0    20012620    000006b9     
                   20012620    00000101     libc.a : aeabi_ctype.S.obj (.rodata:__aeabi_ctype_table_)
                   20012721    00000002     drivers_cc32xx.a : UART2CC32XX.c.obj (.rodata.stopBits)
                   20012723    00000001     ti_drivers_config.o (.rodata.GPIO_pinUpperBound)
@@ -443,55 +446,55 @@ section   page    origin      length       input sections
                   20012c1c    00000010     ti_drivers_config.o (.rodata.GPIO_config)
                   20012c2c    00000010     drivers_cc32xx.a : I2CCC32XX.c.obj (.rodata.cst16)
                   20012c3c    00000010     ti_drivers_config.o (.rodata.timerCC32XXHWAttrs)
-                  20012c4c    0000000d     gpiointerrupt.o (.rodata.str1.8099049698717124711)
-                  20012c59    00000003     --HOLE-- [fill = 0]
-                  20012c5c    0000000c     drivers_cc32xx.a : Timer.c.obj (.rodata.defaultParams)
-                  20012c68    0000000c                      : TimerCC32XX.c.obj (.rodata.defaultParams)
-                  20012c74    0000000c     ti_drivers_config.o (.rodata.udmaCC3220SHWAttrs)
-                  20012c80    00000009     gpiointerrupt.o (.rodata.str1.149745159178111864794)
-                  20012c89    00000003     --HOLE-- [fill = 0]
-                  20012c8c    00000009     gpiointerrupt.o (.rodata.str1.27667157146944505614)
-                  20012c95    00000009     gpiointerrupt.o (.rodata.str1.88141095010518599421)
-                  20012c9e    00000002     --HOLE-- [fill = 0]
-                  20012ca0    00000008     ti_drivers_config.o (.rodata.I2C_config)
-                  20012ca8    00000008     ti_drivers_config.o (.rodata.Timer_config)
-                  20012cb0    00000008     ti_drivers_config.o (.rodata.UART2_config)
-                  20012cb8    00000008     ti_drivers_config.o (.rodata.UDMACC32XX_config)
-                  20012cc0    00000005     drivers_cc32xx.a : UART2CC32XX.c.obj (.rodata.parityType)
-                  20012cc5    00000004                      : UART2CC32XX.c.obj (.rodata.cst4)
-                  20012cc9    00000004     gpiointerrupt.o (.rodata.str1.48557138690711581961)
-                  20012ccd    00000004     gpiointerrupt.o (.rodata.str1.75752999448730089091)
-                  20012cd1    00000004     gpiointerrupt.o (.rodata.str1.99899187528894583921)
+                  20012c4c    0000000e     gpiointerrupt.o (.rodata.str1.88141095010518599421)
+                  20012c5a    0000000d     gpiointerrupt.o (.rodata.str1.8099049698717124711)
+                  20012c67    00000001     --HOLE-- [fill = 0]
+                  20012c68    0000000c     drivers_cc32xx.a : Timer.c.obj (.rodata.defaultParams)
+                  20012c74    0000000c                      : TimerCC32XX.c.obj (.rodata.defaultParams)
+                  20012c80    0000000c     ti_drivers_config.o (.rodata.udmaCC3220SHWAttrs)
+                  20012c8c    00000009     gpiointerrupt.o (.rodata.str1.149745159178111864794)
+                  20012c95    00000003     --HOLE-- [fill = 0]
+                  20012c98    00000009     gpiointerrupt.o (.rodata.str1.27667157146944505614)
+                  20012ca1    00000003     --HOLE-- [fill = 0]
+                  20012ca4    00000008     ti_drivers_config.o (.rodata.I2C_config)
+                  20012cac    00000008     ti_drivers_config.o (.rodata.Timer_config)
+                  20012cb4    00000008     ti_drivers_config.o (.rodata.UART2_config)
+                  20012cbc    00000008     ti_drivers_config.o (.rodata.UDMACC32XX_config)
+                  20012cc4    00000005     drivers_cc32xx.a : UART2CC32XX.c.obj (.rodata.parityType)
+                  20012cc9    00000004                      : UART2CC32XX.c.obj (.rodata.cst4)
+                  20012ccd    00000004     gpiointerrupt.o (.rodata.str1.48557138690711581961)
+                  20012cd1    00000004     gpiointerrupt.o (.rodata.str1.75752999448730089091)
+                  20012cd5    00000004     gpiointerrupt.o (.rodata.str1.99899187528894583921)
 
-.cinit     0    20013368    000000f8     
-                  20013368    000000d1     (.cinit..data.load) [load image, compression = lzss]
-                  20013439    00000003     --HOLE-- [fill = 0]
-                  2001343c    0000000c     (__TI_handler_table)
-                  20013448    00000008     (.cinit..bss.load) [load image, compression = zero_init]
-                  20013450    00000010     (__TI_cinit_table)
+.cinit     0    20013370    000000f8     
+                  20013370    000000d1     (.cinit..data.load) [load image, compression = lzss]
+                  20013441    00000003     --HOLE-- [fill = 0]
+                  20013444    0000000c     (__TI_handler_table)
+                  20013450    00000008     (.cinit..bss.load) [load image, compression = zero_init]
+                  20013458    00000010     (__TI_cinit_table)
 
 .init_array 
 *          0    20004000    00000000     UNINITIALIZED
 
-.data      0    20012cd8    0000068d     UNINITIALIZED
-                  20012cd8    0000030c     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.data.HwiP_dispatchTable)
-                  20012fe4    0000016c     drivers_cc32xx.a : PowerCC32XX.c.obj (.data.PowerCC32XX_module)
-                  20013150    000000f8     ti_drivers_config.o (.data.parkInfo)
-                  20013248    00000084     ti_drivers_config.o (.data.gpioPinConfigs)
-                  200132cc    0000004c     nortos_cc32xx.a : SwiP_nortos.c.obj (.data..L_MergedGlobals)
-                  20013318    00000018     drivers_cc32xx.a : GPIOCC32XX.c.obj (.data..L_MergedGlobals)
-                  20013330    00000010     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.data..L_MergedGlobals)
-                  20013340    00000008     drivers_cc32xx.a : UDMACC32XX.c.obj (.data..L_MergedGlobals)
-                  20013348    00000008     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.data..L_MergedGlobals)
-                  20013350    00000004                     : HwiPCC32XX_nortos.c.obj (.data.HwiP_swiPIntNum)
-                  20013354    00000004     libc.a : aeabi_portable.c.obj (.data.__aeabi_errno)
-                  20013358    00000004            : _lock.c.obj (.data._lock)
-                  2001335c    00000004            : _lock.c.obj (.data._unlock)
-                  20013360    00000001     gpiointerrupt.o (.data.TimerFlag)
-                  20013361    00000001     drivers_cc32xx.a : GPIOCC32XX.c.obj (.data.initCalled)
-                  20013362    00000001                      : GPIOCC32XX.c.obj (.data.portHwiCreatedBitMask)
-                  20013363    00000001     --HOLE--
-                  20013364    00000001     libc.a : memory.c.obj (.data.memory_is_initialized)
+.data      0    20012ce0    0000068d     UNINITIALIZED
+                  20012ce0    0000030c     nortos_cc32xx.a : HwiPCC32XX_nortos.c.obj (.data.HwiP_dispatchTable)
+                  20012fec    0000016c     drivers_cc32xx.a : PowerCC32XX.c.obj (.data.PowerCC32XX_module)
+                  20013158    000000f8     ti_drivers_config.o (.data.parkInfo)
+                  20013250    00000084     ti_drivers_config.o (.data.gpioPinConfigs)
+                  200132d4    0000004c     nortos_cc32xx.a : SwiP_nortos.c.obj (.data..L_MergedGlobals)
+                  20013320    00000018     drivers_cc32xx.a : GPIOCC32XX.c.obj (.data..L_MergedGlobals)
+                  20013338    00000010     nortos_cc32xx.a : SemaphoreP_nortos.c.obj (.data..L_MergedGlobals)
+                  20013348    00000008     drivers_cc32xx.a : UDMACC32XX.c.obj (.data..L_MergedGlobals)
+                  20013350    00000008     nortos_cc32xx.a : ClockPSysTick_nortos.c.obj (.data..L_MergedGlobals)
+                  20013358    00000004                     : HwiPCC32XX_nortos.c.obj (.data.HwiP_swiPIntNum)
+                  2001335c    00000004     libc.a : aeabi_portable.c.obj (.data.__aeabi_errno)
+                  20013360    00000004            : _lock.c.obj (.data._lock)
+                  20013364    00000004            : _lock.c.obj (.data._unlock)
+                  20013368    00000001     gpiointerrupt.o (.data.TimerFlag)
+                  20013369    00000001     drivers_cc32xx.a : GPIOCC32XX.c.obj (.data.initCalled)
+                  2001336a    00000001                      : GPIOCC32XX.c.obj (.data.portHwiCreatedBitMask)
+                  2001336b    00000001     --HOLE--
+                  2001336c    00000001     libc.a : memory.c.obj (.data.memory_is_initialized)
 
 .log_data 
 *          0    90000000    00000000     COPY SECTION
@@ -509,10 +512,10 @@ MODULE SUMMARY
        Module                         code    ro data   rw data
        ------                         ----    -------   -------
     .\
-       gpiointerrupt.o                868     298       116    
+       gpiointerrupt.o                912     303       120    
        main_nortos.o                  16      0         0      
     +--+------------------------------+-------+---------+---------+
-       Total:                         884     298       116    
+       Total:                         928     303       120    
                                                                
     .\syscfg\
        ti_drivers_config.o            34      224       2500   
@@ -601,19 +604,19 @@ MODULE SUMMARY
        Stack:                         0       0         4096   
        Linker Generated:              0       245       0      
     +--+------------------------------+-------+---------+---------+
-       Grand Total:                   23254   2014      41903  
+       Grand Total:                   23298   2019      41907  
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 20013450 records: 2, size/record: 8, table size: 16
-	.data: load addr=20013368, load size=000000d1 bytes, run addr=20012cd8, run size=0000068d bytes, compression=lzss
-	.bss: load addr=20013448, load size=00000008 bytes, run addr=20011c00, run size=00000a17 bytes, compression=zero_init
+__TI_cinit_table @ 20013458 records: 2, size/record: 8, table size: 16
+	.data: load addr=20013370, load size=000000d1 bytes, run addr=20012ce0, run size=0000068d bytes, compression=lzss
+	.bss: load addr=20013450, load size=00000008 bytes, run addr=20011c00, run size=00000a1b bytes, compression=zero_init
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 2001343c records: 3, size/record: 4, table size: 12
+__TI_handler_table @ 20013444 records: 3, size/record: 4, table size: 12
 	index: 0, handler: __TI_decompress_lzss
 	index: 1, handler: __TI_decompress_none
 	index: 2, handler: __TI_zero_init
@@ -623,257 +626,257 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                             
 -------   ----                             
-20011513  Board_init                       
+20011523  Board_init                       
 2000d36b  Board_initHook                   
-20011b18  C$$EXIT                          
-20011605  CPUcpsid                         
-20011619  CPUcpsie                         
-20011a39  CPUprimask                       
-20011985  CPUwfi                           
-2001171d  ClockP_add                       
+20011b48  C$$EXIT                          
+20011615  CPUcpsid                         
+20011629  CPUcpsie                         
+20011a6d  CPUprimask                       
+200119b9  CPUwfi                           
+20011741  ClockP_add                       
 200125e0  ClockP_ctrl                      
-2001073d  ClockP_destruct                  
-20011ae9  ClockP_doTick                    
-200117f5  ClockP_getCpuFreq                
-20011805  ClockP_getSystemTicks            
-20010b05  ClockP_getTicksUntilInterrupt    
-20011a43  ClockP_isActive                  
-20011815  ClockP_setTicks                  
-20010931  ClockP_start                     
-2000fadd  ClockP_startup                   
-20010689  ClockP_stop                      
-2000ffe5  ClockP_sysTickHandler            
-2001334c  ClockP_tickPeriod                
-2000f911  FlashDisable                     
-2001021f  GPIODirModeSet                   
-2001172f  GPIOIntClear                     
-200113fd  GPIOIntDisable                   
-200114b3  GPIOIntEnable                    
-20010c85  GPIOIntStatus                    
-2000ea05  GPIOIntTypeSet                   
-200114cb  GPIOPinRead                      
-20011119  GPIOPinWrite                     
+2001074d  ClockP_destruct                  
+20011b17  ClockP_doTick                    
+20011819  ClockP_getCpuFreq                
+20011829  ClockP_getSystemTicks            
+20010b15  ClockP_getTicksUntilInterrupt    
+20011a77  ClockP_isActive                  
+20011839  ClockP_setTicks                  
+20010941  ClockP_start                     
+2000faed  ClockP_startup                   
+20010699  ClockP_stop                      
+2000fff5  ClockP_sysTickHandler            
+20013354  ClockP_tickPeriod                
+2000f921  FlashDisable                     
+2001022f  GPIODirModeSet                   
+20011753  GPIOIntClear                     
+2001140d  GPIOIntDisable                   
+200114c3  GPIOIntEnable                    
+20010c95  GPIOIntStatus                    
+2000eac1  GPIOIntTypeSet                   
+200114db  GPIOPinRead                      
+20011129  GPIOPinWrite                     
 20012c1c  GPIO_config                      
-20010265  GPIO_disableInt                  
-200102a9  GPIO_enableInt                   
-2000fce1  GPIO_hwiIntFxn                   
-2000ef99  GPIO_init                        
+20010275  GPIO_disableInt                  
+200102b9  GPIO_enableInt                   
+2000fcf1  GPIO_hwiIntFxn                   
+2000efa9  GPIO_init                        
 20012723  GPIO_pinUpperBound               
-20011355  GPIO_setCallback                 
+20011365  GPIO_setCallback                 
 2000dad5  GPIO_setConfig                   
-2000fe21  GPIO_setInterruptConfig          
-2000fbe5  GPIO_toggle                      
-2000f851  GPIO_write                       
-20011741  HwiP_Params_init                 
-20011aed  HwiP_clearInterrupt              
-2000f2c5  HwiP_construct                   
-20010dc3  HwiP_create                      
-20011753  HwiP_delete                      
-2001162d  HwiP_destruct                    
-20011a89  HwiP_disable                     
-20011af1  HwiP_disableInterrupt            
-20011371  HwiP_dispatch                    
-20011af5  HwiP_enable                      
-20011af9  HwiP_enableInterrupt             
-20011825  HwiP_inISR                       
-20011915  HwiP_interruptsEnabled           
-20011afd  HwiP_post                        
-20011a91  HwiP_restore                     
-20013350  HwiP_swiPIntNum                  
-20010b35  I2CFIFODataGetNonBlocking        
-20010965  I2CFIFODataPutNonBlocking        
-20011923  I2CFIFOStatus                    
-20011529  I2CMasterBurstLengthSet          
-20010e6b  I2CMasterBusBusy                 
-20011835  I2CMasterControl                 
-20011765  I2CMasterDisable                 
-20011777  I2CMasterEnable                  
-2000ed3f  I2CMasterInitExpClk              
-20011845  I2CMasterIntClearEx              
-2001153f  I2CMasterIntDisableEx            
-20011641  I2CMasterIntEnableEx             
-20010d6b  I2CMasterIntStatusEx             
-20010e93  I2CMasterSlaveAddrSet            
-20011855  I2CMasterTimeoutSet              
-20010fd5  I2CRxFIFOConfigSet               
-20011555  I2CRxFIFOFlush                   
-20011aa1  I2CSupport_controllerFinish      
-20011ad1  I2CSupport_powerRelConstraint    
-20011ad7  I2CSupport_powerSetConstraint    
-2000f96d  I2CSupport_primeTransfer         
-20010ebb  I2CTxFIFOConfigSet               
-2001156b  I2CTxFIFOFlush                   
-2001199d  I2C_Params_init                  
-20010ee3  I2C_cancel                       
-20012ca0  I2C_config                       
+2000fe31  GPIO_setInterruptConfig          
+2000fbf5  GPIO_toggle                      
+2000f861  GPIO_write                       
+20011765  HwiP_Params_init                 
+20011b1b  HwiP_clearInterrupt              
+2000f2d5  HwiP_construct                   
+20010dd3  HwiP_create                      
+20011777  HwiP_delete                      
+2001163d  HwiP_destruct                    
+20011abd  HwiP_disable                     
+20011b1f  HwiP_disableInterrupt            
+20011381  HwiP_dispatch                    
+20011b23  HwiP_enable                      
+20011b27  HwiP_enableInterrupt             
+20011849  HwiP_inISR                       
+20011949  HwiP_interruptsEnabled           
+20011b2b  HwiP_post                        
+20011ac5  HwiP_restore                     
+20013358  HwiP_swiPIntNum                  
+20010b45  I2CFIFODataGetNonBlocking        
+20010975  I2CFIFODataPutNonBlocking        
+20011957  I2CFIFOStatus                    
+20011539  I2CMasterBurstLengthSet          
+20010e7b  I2CMasterBusBusy                 
+20011859  I2CMasterControl                 
+20011789  I2CMasterDisable                 
+2001179b  I2CMasterEnable                  
+2000ed4f  I2CMasterInitExpClk              
+20011869  I2CMasterIntClearEx              
+2001154f  I2CMasterIntDisableEx            
+20011651  I2CMasterIntEnableEx             
+20010d7b  I2CMasterIntStatusEx             
+20010ea3  I2CMasterSlaveAddrSet            
+20011879  I2CMasterTimeoutSet              
+20010fe5  I2CRxFIFOConfigSet               
+20011565  I2CRxFIFOFlush                   
+20011ad5  I2CSupport_controllerFinish      
+20011b05  I2CSupport_powerRelConstraint    
+20011b0b  I2CSupport_powerSetConstraint    
+2000f97d  I2CSupport_primeTransfer         
+20010ecb  I2CTxFIFOConfigSet               
+2001157b  I2CTxFIFOFlush                   
+200119d1  I2C_Params_init                  
+20010ef3  I2C_cancel                       
+20012ca4  I2C_config                       
 20012a96  I2C_count                        
 2000de73  I2C_init                         
 2000e3ad  I2C_open                         
-20011789  I2C_transfer                     
+200117ad  I2C_transfer                     
 2000dd4d  I2C_transferTimeout              
 UNDEFED   ITM_flush                        
 UNDEFED   ITM_restore                      
 2000e649  IntDisable                       
 2000e711  IntEnable                        
-20011a4d  IntMasterDisable                 
-20011a57  IntMasterEnable                  
-2000f781  IntPendClear                     
-2000eb5d  IntPendSet                       
-2000fb35  IntPrioritySet                   
-200111a1  IntRegister                      
-20010ff9  IntUnregister                    
-20011655  IntVTableBaseSet                 
-2001101d  List_put                         
-20010f0b  List_remove                      
-20011b05  NoRTOS_start                     
+20011a81  IntMasterDisable                 
+20011a8b  IntMasterEnable                  
+2000f791  IntPendClear                     
+2000eb6d  IntPendSet                       
+2000fb45  IntPrioritySet                   
+200111b1  IntRegister                      
+20011009  IntUnregister                    
+20011665  IntVTableBaseSet                 
+2001102d  List_put                         
+20010f1b  List_remove                      
+20011b33  NoRTOS_start                     
 2000c8ad  PRCMCC3200MCUInit                
-20011417  PRCMHIBRegRead                   
-20011431  PRCMHIBRegWrite                  
-2000f339  PRCMHibernateWakeUpGPIOSelect    
-2000f9c9  PRCMHibernateWakeupSourceDisable 
-2000fd31  PRCMHibernateWakeupSourceEnable  
-2001002d  PRCMIntEnable                    
-2000fb8d  PRCMLPDSEnter                    
-20010193  PRCMLPDSEnterKeepDebugIf         
-20010b65  PRCMLPDSIntervalSet              
-2000fe6d  PRCMLPDSRestoreInfoSet           
-20010ded  PRCMLPDSWakeUpGPIOSelect         
-200119cd  PRCMLPDSWakeupCauseGet           
-2001144b  PRCMLPDSWakeupSourceDisable      
-20011041  PRCMLPDSWakeupSourceEnable       
-20010e17  PRCMPeripheralClkDisable         
-2000fa81  PRCMPeripheralClkEnable          
-2000f6ad  PRCMPeripheralReset              
-20010075  PRCMPeripheralStatusGet          
-20010f33  PRCMSRAMRetentionEnable          
-20011aa9  PRCMSleepEnter                   
-20010b95  PRCMSlowClkCtrFastGet            
-2000f0b9  PRCMSysResetCauseGet             
-200100bd  PinConfigGet                     
-2000ec01  PinConfigSet                     
-20010999  PinDirModeGet                    
-20010649  PinDirModeSet                    
-2001088d  PinLock                          
-2000f491  PinLockLevelSet                  
-200109cd  PinModeGet                       
-20010441  PinModeSet                       
-20011465  PinToPadGet                      
-200111c1  PinTypeI2C                       
-20011281  PinTypeUART                      
-2001113b  PinUnlock                        
+20011427  PRCMHIBRegRead                   
+20011441  PRCMHIBRegWrite                  
+2000f349  PRCMHibernateWakeUpGPIOSelect    
+2000f9d9  PRCMHibernateWakeupSourceDisable 
+2000fd41  PRCMHibernateWakeupSourceEnable  
+2001003d  PRCMIntEnable                    
+2000fb9d  PRCMLPDSEnter                    
+200101a3  PRCMLPDSEnterKeepDebugIf         
+20010b75  PRCMLPDSIntervalSet              
+2000fe7d  PRCMLPDSRestoreInfoSet           
+20010dfd  PRCMLPDSWakeUpGPIOSelect         
+20011a01  PRCMLPDSWakeupCauseGet           
+2001145b  PRCMLPDSWakeupSourceDisable      
+20011051  PRCMLPDSWakeupSourceEnable       
+20010e27  PRCMPeripheralClkDisable         
+2000fa91  PRCMPeripheralClkEnable          
+2000f6bd  PRCMPeripheralReset              
+20010085  PRCMPeripheralStatusGet          
+20010f43  PRCMSRAMRetentionEnable          
+20011add  PRCMSleepEnter                   
+20010ba5  PRCMSlowClkCtrFastGet            
+2000f0c9  PRCMSysResetCauseGet             
+200100cd  PinConfigGet                     
+2000ec11  PinConfigSet                     
+200109a9  PinDirModeGet                    
+20010659  PinDirModeSet                    
+2001089d  PinLock                          
+2000f4a1  PinLockLevelSet                  
+200109dd  PinModeGet                       
+20010451  PinModeSet                       
+20011475  PinToPadGet                      
+200111d1  PinTypeI2C                       
+20011291  PinTypeUART                      
+2001114b  PinUnlock                        
 200129e8  PowerCC32XX_config               
-2000f149  PowerCC32XX_configureWakeup      
+2000f159  PowerCC32XX_configureWakeup      
 20012178  PowerCC32XX_contextSave          
-2000ee71  PowerCC32XX_enterLPDS            
-20010f5d  PowerCC32XX_getParkState         
-2000edd7  PowerCC32XX_initPolicy           
-20012fe4  PowerCC32XX_module               
-20010a01  PowerCC32XX_parkPin              
-200111e1  PowerCC32XX_reset                
-20011065  PowerCC32XX_restoreParkState     
-20011089  PowerCC32XX_restoreParkedPin     
-2000eeb5  PowerCC32XX_resumeLPDS           
-2000fc39  PowerCC32XX_setParkState         
+2000ee81  PowerCC32XX_enterLPDS            
+20010f6d  PowerCC32XX_getParkState         
+2000ede7  PowerCC32XX_initPolicy           
+20012fec  PowerCC32XX_module               
+20010a11  PowerCC32XX_parkPin              
+200111f1  PowerCC32XX_reset                
+20011075  PowerCC32XX_restoreParkState     
+20011099  PowerCC32XX_restoreParkedPin     
+2000eec5  PowerCC32XX_resumeLPDS           
+2000fc49  PowerCC32XX_setParkState         
 2000d83d  PowerCC32XX_sleepPolicy          
-20011669  Power_disablePolicy              
-20011865  Power_enablePolicy               
-200119d9  Power_getConstraintMask          
-2001167d  Power_getTransitionLatency       
-20011691  Power_idleFunc                   
-2000f24d  Power_init                       
-200110ad  Power_registerNotify             
-200102ed  Power_releaseConstraint          
-2000fc8d  Power_releaseDependency          
-20010775  Power_setConstraint              
-2000f4fd  Power_setDependency              
+20011679  Power_disablePolicy              
+20011889  Power_enablePolicy               
+20011a0d  Power_getConstraintMask          
+2001168d  Power_getTransitionLatency       
+200116a1  Power_idleFunc                   
+2000f25d  Power_init                       
+200110bd  Power_registerNotify             
+200102fd  Power_releaseConstraint          
+2000fc9d  Power_releaseDependency          
+20010785  Power_setConstraint              
+2000f50d  Power_setDependency              
 2000cd65  Power_sleep                      
-20011201  Power_unregisterNotify           
-20011875  RingBuf_construct                
-20010cb3  RingBuf_getConsume               
-20011b09  RingBuf_getCount                 
-2001115d  RingBuf_getPointer               
-200101d9  RingBuf_put                      
-200107ad  RingBuf_putAdvance               
-20010ce1  RingBuf_putPointer               
-2000fd81  SemaphoreP_construct             
-20011221  SemaphoreP_constructBinary       
-200114e3  SemaphoreP_create                
-20011241  SemaphoreP_createBinary          
-20013338  SemaphoreP_defaultParams         
-20011b0d  SemaphoreP_delete                
-2000f147  SemaphoreP_destruct              
-2000edd9  SemaphoreP_pend                  
-20010549  SemaphoreP_post                  
-2001138d  SwiP_disable                     
-200107e5  SwiP_restore                     
-2001179b  SysTickEnable                    
-200117ad  SysTickIntDisable                
-200117bf  SysTickIntEnable                 
-20011581  SysTickPeriodSet                 
-200117e3  TI_memcpy_small                  
-20011969  TI_memset_small                  
-2000fa25  TimerCC32XX_allocateTimerResource
-20010a35  TimerCC32XX_freeTimerResource    
-20010483  TimerControlStall                
-20011261  TimerDisable                     
-2001147f  TimerEnable                      
-20013360  TimerFlag                        
-20011885  TimerIntClear                    
-20011597  TimerIntDisable                  
-200116a5  TimerIntEnable                   
-20010bc5  TimerLoadSet                     
-20010bf5  TimerPrescaleSet                 
-20010f85  TimerSupport_timerDisable        
-20010701  TimerSupport_timerEnable         
-20011895  Timer_Params_init                
-200104c5  Timer_close                      
-20012ca8  Timer_config                     
+20011211  Power_unregisterNotify           
+20011899  RingBuf_construct                
+20010cc3  RingBuf_getConsume               
+20011b37  RingBuf_getCount                 
+2001116d  RingBuf_getPointer               
+200101e9  RingBuf_put                      
+200107bd  RingBuf_putAdvance               
+20010cf1  RingBuf_putPointer               
+2000fd91  SemaphoreP_construct             
+20011231  SemaphoreP_constructBinary       
+200114f3  SemaphoreP_create                
+20011251  SemaphoreP_createBinary          
+20013340  SemaphoreP_defaultParams         
+20011b3b  SemaphoreP_delete                
+2000f157  SemaphoreP_destruct              
+2000ede9  SemaphoreP_pend                  
+20010559  SemaphoreP_post                  
+2001139d  SwiP_disable                     
+200107f5  SwiP_restore                     
+200117bf  SysTickEnable                    
+200117d1  SysTickIntDisable                
+200117e3  SysTickIntEnable                 
+20011591  SysTickPeriodSet                 
+20011807  TI_memcpy_small                  
+2001199d  TI_memset_small                  
+2000fa35  TimerCC32XX_allocateTimerResource
+20010a45  TimerCC32XX_freeTimerResource    
+20010493  TimerControlStall                
+20011271  TimerDisable                     
+2001148f  TimerEnable                      
+20013368  TimerFlag                        
+200118a9  TimerIntClear                    
+200115a7  TimerIntDisable                  
+200116b5  TimerIntEnable                   
+20010bd5  TimerLoadSet                     
+20010c05  TimerPrescaleSet                 
+20010f95  TimerSupport_timerDisable        
+20010711  TimerSupport_timerEnable         
+200118b9  Timer_Params_init                
+200104d5  Timer_close                      
+20012cac  Timer_config                     
 20012a97  Timer_count                      
-2000f24b  Timer_init                       
+2000f25b  Timer_init                       
 2000d98d  Timer_open                       
-20010331  Timer_start                      
-20010589  Timer_stop                       
-200110d1  UART2Support_disableRx           
-200119f1  UART2Support_disableTx           
+20010341  Timer_start                      
+20010599  Timer_stop                       
+200110e1  UART2Support_disableRx           
+20011a25  UART2Support_disableTx           
 2000e57d  UART2Support_dmaStartRx          
-2000e89d  UART2Support_dmaStartTx          
-2000ff05  UART2Support_dmaStopRx           
-2000f8b1  UART2Support_dmaStopTx           
-200119fd  UART2Support_enableTx            
-20011add  UART2Support_powerRelConstraint  
-2001117f  UART2Support_sendData            
-200118a5  UART2Support_txDone              
-20011a09  UART2_Params_init                
+2000e959  UART2Support_dmaStartTx          
+2000ff15  UART2Support_dmaStopRx           
+2000f8c1  UART2Support_dmaStopTx           
+20011a31  UART2Support_enableTx            
+20011b11  UART2Support_powerRelConstraint  
+2001118f  UART2Support_sendData            
+200118c9  UART2Support_txDone              
+20011a3d  UART2_Params_init                
 2000e495  UART2_close                      
-20012cb0  UART2_config                     
+20012cb4  UART2_config                     
 20012b4e  UART2_count                      
 20012ae8  UART2_defaultParams              
 2000d36d  UART2_open                       
-20010a69  UART2_rxDisable                  
-20011931  UART2_write                      
-2001129f  UART2_writeTimeout               
+20010a79  UART2_rxDisable                  
+20011965  UART2_write                      
+200112af  UART2_writeTimeout               
 2000d6c9  UART2_writeTimeoutBlocking       
 2000df95  UART2_writeTimeoutNonblocking    
-200118b5  UARTBusy                         
-200108f9  UARTCharPutNonBlocking           
-200115ad  UARTCharsAvail                   
-2000f3ad  UARTConfigSetExpClk              
-200115c3  UARTDMADisable                   
-200116b9  UARTDMAEnable                    
-20010d0f  UARTDisable                      
-200112bd  UARTEnable                       
-200115d9  UARTFIFOLevelSet                 
-20011499  UARTFlowControlSet               
-200118c5  UARTIntClear                     
-200115ef  UARTIntDisable                   
-200116cd  UARTIntEnable                    
-20010e41  UARTIntStatus                    
-200118d5  UARTRxErrorGet                   
-2001081d  UDMACC32XX_close                 
-20012cb8  UDMACC32XX_config                
-200106c5  UDMACC32XX_init                  
-2000f569  UDMACC32XX_open                  
-20011ab1  UtilsDelay                       
+200118d9  UARTBusy                         
+20010909  UARTCharPutNonBlocking           
+200115bd  UARTCharsAvail                   
+2000f3bd  UARTConfigSetExpClk              
+200115d3  UARTDMADisable                   
+200116c9  UARTDMAEnable                    
+20010d1f  UARTDisable                      
+200112cd  UARTEnable                       
+200115e9  UARTFIFOLevelSet                 
+200114a9  UARTFlowControlSet               
+200118e9  UARTIntClear                     
+200115ff  UARTIntDisable                   
+200116dd  UARTIntEnable                    
+20010e51  UARTIntStatus                    
+200118f9  UARTRxErrorGet                   
+2001082d  UDMACC32XX_close                 
+20012cbc  UDMACC32XX_config                
+200106d5  UDMACC32XX_init                  
+2000f579  UDMACC32XX_open                  
+20011ae5  UtilsDelay                       
 20004000  __STACK_END                      
 00001000  __STACK_SIZE                     
 00008000  __SYSMEM_SIZE                    
@@ -886,41 +889,41 @@ UNDEFED   ITM_restore
 00000000  __TI_ATRegion2_region_sz         
 00000000  __TI_ATRegion2_src_addr          
 00000000  __TI_ATRegion2_trg_addr          
-20013450  __TI_CINIT_Base                  
-20013460  __TI_CINIT_Limit                 
-20013460  __TI_CINIT_Warm                  
-2001343c  __TI_Handler_Table_Base          
-20013448  __TI_Handler_Table_Limit         
-20010855  __TI_auto_init_nobinit_nopinit   
-2000f421  __TI_decompress_lzss             
-20011977  __TI_decompress_none             
+20013458  __TI_CINIT_Base                  
+20013468  __TI_CINIT_Limit                 
+20013468  __TI_CINIT_Warm                  
+20013444  __TI_Handler_Table_Base          
+20013450  __TI_Handler_Table_Limit         
+20010865  __TI_auto_init_nobinit_nopinit   
+2000f431  __TI_decompress_lzss             
+200119ab  __TI_decompress_none             
 ffffffff  __TI_pprof_out_hndl              
 2000c041  __TI_printfi_nofloat             
 ffffffff  __TI_prof_data_size              
 ffffffff  __TI_prof_data_start             
-20013368  __TI_static_base__               
-20011905  __TI_zero_init                   
+20013370  __TI_static_base__               
+20011939  __TI_zero_init                   
 20012620  __aeabi_ctype_table_             
 20012620  __aeabi_ctype_table_C            
-20010105  __aeabi_d2iz                     
+20010115  __aeabi_d2iz                     
 2000e1c1  __aeabi_dmul                     
-20013354  __aeabi_errno                    
-20011ab9  __aeabi_errno_addr               
-20010d3d  __aeabi_i2d                      
-2000f84f  __aeabi_ldiv0                    
-20011ac1  __aeabi_memclr                   
-20011ac1  __aeabi_memclr4                  
-20011ac1  __aeabi_memclr8                  
-20011b11  __aeabi_memcpy                   
-20011b11  __aeabi_memcpy4                  
-20011b11  __aeabi_memcpy8                  
-20011a75  __aeabi_memset                   
-20011a75  __aeabi_memset4                  
-20011a75  __aeabi_memset8                  
-200116e1  __aeabi_uldivmod                 
+2001335c  __aeabi_errno                    
+20011aed  __aeabi_errno_addr               
+20010d4d  __aeabi_i2d                      
+2000f85f  __aeabi_ldiv0                    
+20011af5  __aeabi_memclr                   
+20011af5  __aeabi_memclr4                  
+20011af5  __aeabi_memclr8                  
+20011b41  __aeabi_memcpy                   
+20011b41  __aeabi_memcpy4                  
+20011b41  __aeabi_memcpy8                  
+20011aa9  __aeabi_memset                   
+20011aa9  __aeabi_memset4                  
+20011aa9  __aeabi_memset8                  
+200116f1  __aeabi_uldivmod                 
 ffffffff  __binit__                        
-20010105  __fixdfsi                        
-20010d3d  __floatsidf                      
+20010115  __fixdfsi                        
+20010d4d  __floatsidf                      
 UNDEFED   __mpu_init                       
 2000e1c1  __muldf3                         
 20003000  __stack                          
@@ -928,68 +931,69 @@ UNDEFED   __mpu_init
 20004000  __start___llvm_prf_cnts          
 20004000  __stop___llvm_prf_bits           
 20004000  __stop___llvm_prf_cnts           
-2000e955  __udivmoddi4                     
-200110f5  _c_int00_noargs                  
-20013358  _lock                            
-2000fadb  _nop                             
+2000ea11  __udivmoddi4                     
+20011105  _c_int00_noargs                  
+20013360  _lock                            
+2000faeb  _nop                             
 20004040  _sys_memory                      
 UNDEFED   _system_post_cinit               
-20011b15  _system_pre_init                 
-2001335c  _unlock                          
-20011b19  abort                            
+20011b45  _system_pre_init                 
+20013364  _unlock                          
+20011b49  abort                            
 2000de75  aligned_alloc                    
-200105c9  atoi                             
+200105d9  atoi                             
 ffffffff  binit                            
 20012604  bytesToSend                      
-2000fe1f  clkFxn                           
+2000fe2f  clkFxn                           
 2000e2bd  free                             
-20011ae3  gpioButtonFxn0                   
-20010687  gpioButtonFxn1                   
+20011705  gpioButtonFxn0                   
+20011909  gpioButtonFxn1                   
 200123a0  gpioCallbackFunctions            
-20013248  gpioPinConfigs                   
+20013250  gpioPinConfigs                   
 20012424  gpioUserArgs                     
 20012608  i2c                              
 20012be4  i2cCC32XXHWAttrs                 
 200122a4  i2cCC32XXObjects                 
 200125ac  i2cTransaction                   
 2000d539  initI2C                          
-200103b9  initTimer                        
-20010a9d  initUART                         
-20010ad1  initVectors                      
-200118e5  main                             
-2000eab1  mainThread                       
-20011ac9  malloc                           
+200103c9  initTimer                        
+20010aad  initUART                         
+20010ae1  initVectors                      
+20011919  main                             
+2000e89d  mainThread                       
+20011afd  malloc                           
 2000de75  memalign                         
-200112db  memccpy                          
+200112eb  memccpy                          
 2001252c  output                           
-20013150  parkInfo                         
-2000f029  readTemp                         
-200113e1  resetISR                         
-20012614  rxBuffer                         
-200103fd  snprintf                         
-2001260c  timer0                           
+20013158  parkInfo                         
+2000f039  readTemp                         
+200113f1  resetISR                         
+20012618  rxBuffer                         
+2001260c  setpoint                         
+2001040d  snprintf                         
+20012610  timer0                           
 20012c3c  timerCC32XXHWAttrs               
 200124a8  timerCC32XXObjects               
-20011a21  timerCallback                    
-20012616  txBuffer                         
-2000fdd1  uDMAChannelAssign                
-2000ef07  uDMAChannelAttributeDisable      
-20010609  uDMAChannelControlSet            
-200112f9  uDMAChannelDisable               
-20011317  uDMAChannelEnable                
-20011335  uDMAChannelIsEnabled             
-2000ff99  uDMAChannelSizeGet               
+20011a55  timerCallback                    
+2001261a  txBuffer                         
+2000fde1  uDMAChannelAssign                
+2000ef17  uDMAChannelAttributeDisable      
+20010619  uDMAChannelControlSet            
+20011309  uDMAChannelDisable               
+20011327  uDMAChannelEnable                
+20011345  uDMAChannelIsEnabled             
+2000ffa9  uDMAChannelSizeGet               
 2000e0af  uDMAChannelTransferSet           
-200116f5  uDMAControlBaseSet               
-2001194d  uDMAEnable                       
-2001195b  uDMAErrorStatusClear             
-20011a2d  uDMAErrorStatusGet               
-20011709  uDMAIntClear                     
-20012610  uart                             
+20011719  uDMAControlBaseSet               
+20011981  uDMAEnable                       
+2001198f  uDMAErrorStatusClear             
+20011a61  uDMAErrorStatusGet               
+2001172d  uDMAIntClear                     
+20012614  uart                             
 20012000  uart2CC32XXObjects0              
-20012c74  udmaCC3220SHWAttrs               
+20012c80  udmaCC3220SHWAttrs               
 200125f0  udmaCC3220SObject                
-200118f5  wcslen                           
+20011929  wcslen                           
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -1038,274 +1042,274 @@ address   name
 2000e57d  UART2Support_dmaStartRx          
 2000e649  IntDisable                       
 2000e711  IntEnable                        
-2000e89d  UART2Support_dmaStartTx          
-2000e955  __udivmoddi4                     
-2000ea05  GPIOIntTypeSet                   
-2000eab1  mainThread                       
-2000eb5d  IntPendSet                       
-2000ec01  PinConfigSet                     
-2000ed3f  I2CMasterInitExpClk              
-2000edd7  PowerCC32XX_initPolicy           
-2000edd9  SemaphoreP_pend                  
-2000ee71  PowerCC32XX_enterLPDS            
-2000eeb5  PowerCC32XX_resumeLPDS           
-2000ef07  uDMAChannelAttributeDisable      
-2000ef99  GPIO_init                        
-2000f029  readTemp                         
-2000f0b9  PRCMSysResetCauseGet             
-2000f147  SemaphoreP_destruct              
-2000f149  PowerCC32XX_configureWakeup      
-2000f24b  Timer_init                       
-2000f24d  Power_init                       
-2000f2c5  HwiP_construct                   
-2000f339  PRCMHibernateWakeUpGPIOSelect    
-2000f3ad  UARTConfigSetExpClk              
-2000f421  __TI_decompress_lzss             
-2000f491  PinLockLevelSet                  
-2000f4fd  Power_setDependency              
-2000f569  UDMACC32XX_open                  
-2000f6ad  PRCMPeripheralReset              
-2000f781  IntPendClear                     
-2000f84f  __aeabi_ldiv0                    
-2000f851  GPIO_write                       
-2000f8b1  UART2Support_dmaStopTx           
-2000f911  FlashDisable                     
-2000f96d  I2CSupport_primeTransfer         
-2000f9c9  PRCMHibernateWakeupSourceDisable 
-2000fa25  TimerCC32XX_allocateTimerResource
-2000fa81  PRCMPeripheralClkEnable          
-2000fadb  _nop                             
-2000fadd  ClockP_startup                   
-2000fb35  IntPrioritySet                   
-2000fb8d  PRCMLPDSEnter                    
-2000fbe5  GPIO_toggle                      
-2000fc39  PowerCC32XX_setParkState         
-2000fc8d  Power_releaseDependency          
-2000fce1  GPIO_hwiIntFxn                   
-2000fd31  PRCMHibernateWakeupSourceEnable  
-2000fd81  SemaphoreP_construct             
-2000fdd1  uDMAChannelAssign                
-2000fe1f  clkFxn                           
-2000fe21  GPIO_setInterruptConfig          
-2000fe6d  PRCMLPDSRestoreInfoSet           
-2000ff05  UART2Support_dmaStopRx           
-2000ff99  uDMAChannelSizeGet               
-2000ffe5  ClockP_sysTickHandler            
-2001002d  PRCMIntEnable                    
-20010075  PRCMPeripheralStatusGet          
-200100bd  PinConfigGet                     
-20010105  __aeabi_d2iz                     
-20010105  __fixdfsi                        
-20010193  PRCMLPDSEnterKeepDebugIf         
-200101d9  RingBuf_put                      
-2001021f  GPIODirModeSet                   
-20010265  GPIO_disableInt                  
-200102a9  GPIO_enableInt                   
-200102ed  Power_releaseConstraint          
-20010331  Timer_start                      
-200103b9  initTimer                        
-200103fd  snprintf                         
-20010441  PinModeSet                       
-20010483  TimerControlStall                
-200104c5  Timer_close                      
-20010549  SemaphoreP_post                  
-20010589  Timer_stop                       
-200105c9  atoi                             
-20010609  uDMAChannelControlSet            
-20010649  PinDirModeSet                    
-20010687  gpioButtonFxn1                   
-20010689  ClockP_stop                      
-200106c5  UDMACC32XX_init                  
-20010701  TimerSupport_timerEnable         
-2001073d  ClockP_destruct                  
-20010775  Power_setConstraint              
-200107ad  RingBuf_putAdvance               
-200107e5  SwiP_restore                     
-2001081d  UDMACC32XX_close                 
-20010855  __TI_auto_init_nobinit_nopinit   
-2001088d  PinLock                          
-200108f9  UARTCharPutNonBlocking           
-20010931  ClockP_start                     
-20010965  I2CFIFODataPutNonBlocking        
-20010999  PinDirModeGet                    
-200109cd  PinModeGet                       
-20010a01  PowerCC32XX_parkPin              
-20010a35  TimerCC32XX_freeTimerResource    
-20010a69  UART2_rxDisable                  
-20010a9d  initUART                         
-20010ad1  initVectors                      
-20010b05  ClockP_getTicksUntilInterrupt    
-20010b35  I2CFIFODataGetNonBlocking        
-20010b65  PRCMLPDSIntervalSet              
-20010b95  PRCMSlowClkCtrFastGet            
-20010bc5  TimerLoadSet                     
-20010bf5  TimerPrescaleSet                 
-20010c85  GPIOIntStatus                    
-20010cb3  RingBuf_getConsume               
-20010ce1  RingBuf_putPointer               
-20010d0f  UARTDisable                      
-20010d3d  __aeabi_i2d                      
-20010d3d  __floatsidf                      
-20010d6b  I2CMasterIntStatusEx             
-20010dc3  HwiP_create                      
-20010ded  PRCMLPDSWakeUpGPIOSelect         
-20010e17  PRCMPeripheralClkDisable         
-20010e41  UARTIntStatus                    
-20010e6b  I2CMasterBusBusy                 
-20010e93  I2CMasterSlaveAddrSet            
-20010ebb  I2CTxFIFOConfigSet               
-20010ee3  I2C_cancel                       
-20010f0b  List_remove                      
-20010f33  PRCMSRAMRetentionEnable          
-20010f5d  PowerCC32XX_getParkState         
-20010f85  TimerSupport_timerDisable        
-20010fd5  I2CRxFIFOConfigSet               
-20010ff9  IntUnregister                    
-2001101d  List_put                         
-20011041  PRCMLPDSWakeupSourceEnable       
-20011065  PowerCC32XX_restoreParkState     
-20011089  PowerCC32XX_restoreParkedPin     
-200110ad  Power_registerNotify             
-200110d1  UART2Support_disableRx           
-200110f5  _c_int00_noargs                  
-20011119  GPIOPinWrite                     
-2001113b  PinUnlock                        
-2001115d  RingBuf_getPointer               
-2001117f  UART2Support_sendData            
-200111a1  IntRegister                      
-200111c1  PinTypeI2C                       
-200111e1  PowerCC32XX_reset                
-20011201  Power_unregisterNotify           
-20011221  SemaphoreP_constructBinary       
-20011241  SemaphoreP_createBinary          
-20011261  TimerDisable                     
-20011281  PinTypeUART                      
-2001129f  UART2_writeTimeout               
-200112bd  UARTEnable                       
-200112db  memccpy                          
-200112f9  uDMAChannelDisable               
-20011317  uDMAChannelEnable                
-20011335  uDMAChannelIsEnabled             
-20011355  GPIO_setCallback                 
-20011371  HwiP_dispatch                    
-2001138d  SwiP_disable                     
-200113e1  resetISR                         
-200113fd  GPIOIntDisable                   
-20011417  PRCMHIBRegRead                   
-20011431  PRCMHIBRegWrite                  
-2001144b  PRCMLPDSWakeupSourceDisable      
-20011465  PinToPadGet                      
-2001147f  TimerEnable                      
-20011499  UARTFlowControlSet               
-200114b3  GPIOIntEnable                    
-200114cb  GPIOPinRead                      
-200114e3  SemaphoreP_create                
-20011513  Board_init                       
-20011529  I2CMasterBurstLengthSet          
-2001153f  I2CMasterIntDisableEx            
-20011555  I2CRxFIFOFlush                   
-2001156b  I2CTxFIFOFlush                   
-20011581  SysTickPeriodSet                 
-20011597  TimerIntDisable                  
-200115ad  UARTCharsAvail                   
-200115c3  UARTDMADisable                   
-200115d9  UARTFIFOLevelSet                 
-200115ef  UARTIntDisable                   
-20011605  CPUcpsid                         
-20011619  CPUcpsie                         
-2001162d  HwiP_destruct                    
-20011641  I2CMasterIntEnableEx             
-20011655  IntVTableBaseSet                 
-20011669  Power_disablePolicy              
-2001167d  Power_getTransitionLatency       
-20011691  Power_idleFunc                   
-200116a5  TimerIntEnable                   
-200116b9  UARTDMAEnable                    
-200116cd  UARTIntEnable                    
-200116e1  __aeabi_uldivmod                 
-200116f5  uDMAControlBaseSet               
-20011709  uDMAIntClear                     
-2001171d  ClockP_add                       
-2001172f  GPIOIntClear                     
-20011741  HwiP_Params_init                 
-20011753  HwiP_delete                      
-20011765  I2CMasterDisable                 
-20011777  I2CMasterEnable                  
-20011789  I2C_transfer                     
-2001179b  SysTickEnable                    
-200117ad  SysTickIntDisable                
-200117bf  SysTickIntEnable                 
-200117e3  TI_memcpy_small                  
-200117f5  ClockP_getCpuFreq                
-20011805  ClockP_getSystemTicks            
-20011815  ClockP_setTicks                  
-20011825  HwiP_inISR                       
-20011835  I2CMasterControl                 
-20011845  I2CMasterIntClearEx              
-20011855  I2CMasterTimeoutSet              
-20011865  Power_enablePolicy               
-20011875  RingBuf_construct                
-20011885  TimerIntClear                    
-20011895  Timer_Params_init                
-200118a5  UART2Support_txDone              
-200118b5  UARTBusy                         
-200118c5  UARTIntClear                     
-200118d5  UARTRxErrorGet                   
-200118e5  main                             
-200118f5  wcslen                           
-20011905  __TI_zero_init                   
-20011915  HwiP_interruptsEnabled           
-20011923  I2CFIFOStatus                    
-20011931  UART2_write                      
-2001194d  uDMAEnable                       
-2001195b  uDMAErrorStatusClear             
-20011969  TI_memset_small                  
-20011977  __TI_decompress_none             
-20011985  CPUwfi                           
-2001199d  I2C_Params_init                  
-200119cd  PRCMLPDSWakeupCauseGet           
-200119d9  Power_getConstraintMask          
-200119f1  UART2Support_disableTx           
-200119fd  UART2Support_enableTx            
-20011a09  UART2_Params_init                
-20011a21  timerCallback                    
-20011a2d  uDMAErrorStatusGet               
-20011a39  CPUprimask                       
-20011a43  ClockP_isActive                  
-20011a4d  IntMasterDisable                 
-20011a57  IntMasterEnable                  
-20011a75  __aeabi_memset                   
-20011a75  __aeabi_memset4                  
-20011a75  __aeabi_memset8                  
-20011a89  HwiP_disable                     
-20011a91  HwiP_restore                     
-20011aa1  I2CSupport_controllerFinish      
-20011aa9  PRCMSleepEnter                   
-20011ab1  UtilsDelay                       
-20011ab9  __aeabi_errno_addr               
-20011ac1  __aeabi_memclr                   
-20011ac1  __aeabi_memclr4                  
-20011ac1  __aeabi_memclr8                  
-20011ac9  malloc                           
-20011ad1  I2CSupport_powerRelConstraint    
-20011ad7  I2CSupport_powerSetConstraint    
-20011add  UART2Support_powerRelConstraint  
-20011ae3  gpioButtonFxn0                   
-20011ae9  ClockP_doTick                    
-20011aed  HwiP_clearInterrupt              
-20011af1  HwiP_disableInterrupt            
-20011af5  HwiP_enable                      
-20011af9  HwiP_enableInterrupt             
-20011afd  HwiP_post                        
-20011b05  NoRTOS_start                     
-20011b09  RingBuf_getCount                 
-20011b0d  SemaphoreP_delete                
-20011b11  __aeabi_memcpy                   
-20011b11  __aeabi_memcpy4                  
-20011b11  __aeabi_memcpy8                  
-20011b15  _system_pre_init                 
-20011b18  C$$EXIT                          
-20011b19  abort                            
+2000e89d  mainThread                       
+2000e959  UART2Support_dmaStartTx          
+2000ea11  __udivmoddi4                     
+2000eac1  GPIOIntTypeSet                   
+2000eb6d  IntPendSet                       
+2000ec11  PinConfigSet                     
+2000ed4f  I2CMasterInitExpClk              
+2000ede7  PowerCC32XX_initPolicy           
+2000ede9  SemaphoreP_pend                  
+2000ee81  PowerCC32XX_enterLPDS            
+2000eec5  PowerCC32XX_resumeLPDS           
+2000ef17  uDMAChannelAttributeDisable      
+2000efa9  GPIO_init                        
+2000f039  readTemp                         
+2000f0c9  PRCMSysResetCauseGet             
+2000f157  SemaphoreP_destruct              
+2000f159  PowerCC32XX_configureWakeup      
+2000f25b  Timer_init                       
+2000f25d  Power_init                       
+2000f2d5  HwiP_construct                   
+2000f349  PRCMHibernateWakeUpGPIOSelect    
+2000f3bd  UARTConfigSetExpClk              
+2000f431  __TI_decompress_lzss             
+2000f4a1  PinLockLevelSet                  
+2000f50d  Power_setDependency              
+2000f579  UDMACC32XX_open                  
+2000f6bd  PRCMPeripheralReset              
+2000f791  IntPendClear                     
+2000f85f  __aeabi_ldiv0                    
+2000f861  GPIO_write                       
+2000f8c1  UART2Support_dmaStopTx           
+2000f921  FlashDisable                     
+2000f97d  I2CSupport_primeTransfer         
+2000f9d9  PRCMHibernateWakeupSourceDisable 
+2000fa35  TimerCC32XX_allocateTimerResource
+2000fa91  PRCMPeripheralClkEnable          
+2000faeb  _nop                             
+2000faed  ClockP_startup                   
+2000fb45  IntPrioritySet                   
+2000fb9d  PRCMLPDSEnter                    
+2000fbf5  GPIO_toggle                      
+2000fc49  PowerCC32XX_setParkState         
+2000fc9d  Power_releaseDependency          
+2000fcf1  GPIO_hwiIntFxn                   
+2000fd41  PRCMHibernateWakeupSourceEnable  
+2000fd91  SemaphoreP_construct             
+2000fde1  uDMAChannelAssign                
+2000fe2f  clkFxn                           
+2000fe31  GPIO_setInterruptConfig          
+2000fe7d  PRCMLPDSRestoreInfoSet           
+2000ff15  UART2Support_dmaStopRx           
+2000ffa9  uDMAChannelSizeGet               
+2000fff5  ClockP_sysTickHandler            
+2001003d  PRCMIntEnable                    
+20010085  PRCMPeripheralStatusGet          
+200100cd  PinConfigGet                     
+20010115  __aeabi_d2iz                     
+20010115  __fixdfsi                        
+200101a3  PRCMLPDSEnterKeepDebugIf         
+200101e9  RingBuf_put                      
+2001022f  GPIODirModeSet                   
+20010275  GPIO_disableInt                  
+200102b9  GPIO_enableInt                   
+200102fd  Power_releaseConstraint          
+20010341  Timer_start                      
+200103c9  initTimer                        
+2001040d  snprintf                         
+20010451  PinModeSet                       
+20010493  TimerControlStall                
+200104d5  Timer_close                      
+20010559  SemaphoreP_post                  
+20010599  Timer_stop                       
+200105d9  atoi                             
+20010619  uDMAChannelControlSet            
+20010659  PinDirModeSet                    
+20010699  ClockP_stop                      
+200106d5  UDMACC32XX_init                  
+20010711  TimerSupport_timerEnable         
+2001074d  ClockP_destruct                  
+20010785  Power_setConstraint              
+200107bd  RingBuf_putAdvance               
+200107f5  SwiP_restore                     
+2001082d  UDMACC32XX_close                 
+20010865  __TI_auto_init_nobinit_nopinit   
+2001089d  PinLock                          
+20010909  UARTCharPutNonBlocking           
+20010941  ClockP_start                     
+20010975  I2CFIFODataPutNonBlocking        
+200109a9  PinDirModeGet                    
+200109dd  PinModeGet                       
+20010a11  PowerCC32XX_parkPin              
+20010a45  TimerCC32XX_freeTimerResource    
+20010a79  UART2_rxDisable                  
+20010aad  initUART                         
+20010ae1  initVectors                      
+20010b15  ClockP_getTicksUntilInterrupt    
+20010b45  I2CFIFODataGetNonBlocking        
+20010b75  PRCMLPDSIntervalSet              
+20010ba5  PRCMSlowClkCtrFastGet            
+20010bd5  TimerLoadSet                     
+20010c05  TimerPrescaleSet                 
+20010c95  GPIOIntStatus                    
+20010cc3  RingBuf_getConsume               
+20010cf1  RingBuf_putPointer               
+20010d1f  UARTDisable                      
+20010d4d  __aeabi_i2d                      
+20010d4d  __floatsidf                      
+20010d7b  I2CMasterIntStatusEx             
+20010dd3  HwiP_create                      
+20010dfd  PRCMLPDSWakeUpGPIOSelect         
+20010e27  PRCMPeripheralClkDisable         
+20010e51  UARTIntStatus                    
+20010e7b  I2CMasterBusBusy                 
+20010ea3  I2CMasterSlaveAddrSet            
+20010ecb  I2CTxFIFOConfigSet               
+20010ef3  I2C_cancel                       
+20010f1b  List_remove                      
+20010f43  PRCMSRAMRetentionEnable          
+20010f6d  PowerCC32XX_getParkState         
+20010f95  TimerSupport_timerDisable        
+20010fe5  I2CRxFIFOConfigSet               
+20011009  IntUnregister                    
+2001102d  List_put                         
+20011051  PRCMLPDSWakeupSourceEnable       
+20011075  PowerCC32XX_restoreParkState     
+20011099  PowerCC32XX_restoreParkedPin     
+200110bd  Power_registerNotify             
+200110e1  UART2Support_disableRx           
+20011105  _c_int00_noargs                  
+20011129  GPIOPinWrite                     
+2001114b  PinUnlock                        
+2001116d  RingBuf_getPointer               
+2001118f  UART2Support_sendData            
+200111b1  IntRegister                      
+200111d1  PinTypeI2C                       
+200111f1  PowerCC32XX_reset                
+20011211  Power_unregisterNotify           
+20011231  SemaphoreP_constructBinary       
+20011251  SemaphoreP_createBinary          
+20011271  TimerDisable                     
+20011291  PinTypeUART                      
+200112af  UART2_writeTimeout               
+200112cd  UARTEnable                       
+200112eb  memccpy                          
+20011309  uDMAChannelDisable               
+20011327  uDMAChannelEnable                
+20011345  uDMAChannelIsEnabled             
+20011365  GPIO_setCallback                 
+20011381  HwiP_dispatch                    
+2001139d  SwiP_disable                     
+200113f1  resetISR                         
+2001140d  GPIOIntDisable                   
+20011427  PRCMHIBRegRead                   
+20011441  PRCMHIBRegWrite                  
+2001145b  PRCMLPDSWakeupSourceDisable      
+20011475  PinToPadGet                      
+2001148f  TimerEnable                      
+200114a9  UARTFlowControlSet               
+200114c3  GPIOIntEnable                    
+200114db  GPIOPinRead                      
+200114f3  SemaphoreP_create                
+20011523  Board_init                       
+20011539  I2CMasterBurstLengthSet          
+2001154f  I2CMasterIntDisableEx            
+20011565  I2CRxFIFOFlush                   
+2001157b  I2CTxFIFOFlush                   
+20011591  SysTickPeriodSet                 
+200115a7  TimerIntDisable                  
+200115bd  UARTCharsAvail                   
+200115d3  UARTDMADisable                   
+200115e9  UARTFIFOLevelSet                 
+200115ff  UARTIntDisable                   
+20011615  CPUcpsid                         
+20011629  CPUcpsie                         
+2001163d  HwiP_destruct                    
+20011651  I2CMasterIntEnableEx             
+20011665  IntVTableBaseSet                 
+20011679  Power_disablePolicy              
+2001168d  Power_getTransitionLatency       
+200116a1  Power_idleFunc                   
+200116b5  TimerIntEnable                   
+200116c9  UARTDMAEnable                    
+200116dd  UARTIntEnable                    
+200116f1  __aeabi_uldivmod                 
+20011705  gpioButtonFxn0                   
+20011719  uDMAControlBaseSet               
+2001172d  uDMAIntClear                     
+20011741  ClockP_add                       
+20011753  GPIOIntClear                     
+20011765  HwiP_Params_init                 
+20011777  HwiP_delete                      
+20011789  I2CMasterDisable                 
+2001179b  I2CMasterEnable                  
+200117ad  I2C_transfer                     
+200117bf  SysTickEnable                    
+200117d1  SysTickIntDisable                
+200117e3  SysTickIntEnable                 
+20011807  TI_memcpy_small                  
+20011819  ClockP_getCpuFreq                
+20011829  ClockP_getSystemTicks            
+20011839  ClockP_setTicks                  
+20011849  HwiP_inISR                       
+20011859  I2CMasterControl                 
+20011869  I2CMasterIntClearEx              
+20011879  I2CMasterTimeoutSet              
+20011889  Power_enablePolicy               
+20011899  RingBuf_construct                
+200118a9  TimerIntClear                    
+200118b9  Timer_Params_init                
+200118c9  UART2Support_txDone              
+200118d9  UARTBusy                         
+200118e9  UARTIntClear                     
+200118f9  UARTRxErrorGet                   
+20011909  gpioButtonFxn1                   
+20011919  main                             
+20011929  wcslen                           
+20011939  __TI_zero_init                   
+20011949  HwiP_interruptsEnabled           
+20011957  I2CFIFOStatus                    
+20011965  UART2_write                      
+20011981  uDMAEnable                       
+2001198f  uDMAErrorStatusClear             
+2001199d  TI_memset_small                  
+200119ab  __TI_decompress_none             
+200119b9  CPUwfi                           
+200119d1  I2C_Params_init                  
+20011a01  PRCMLPDSWakeupCauseGet           
+20011a0d  Power_getConstraintMask          
+20011a25  UART2Support_disableTx           
+20011a31  UART2Support_enableTx            
+20011a3d  UART2_Params_init                
+20011a55  timerCallback                    
+20011a61  uDMAErrorStatusGet               
+20011a6d  CPUprimask                       
+20011a77  ClockP_isActive                  
+20011a81  IntMasterDisable                 
+20011a8b  IntMasterEnable                  
+20011aa9  __aeabi_memset                   
+20011aa9  __aeabi_memset4                  
+20011aa9  __aeabi_memset8                  
+20011abd  HwiP_disable                     
+20011ac5  HwiP_restore                     
+20011ad5  I2CSupport_controllerFinish      
+20011add  PRCMSleepEnter                   
+20011ae5  UtilsDelay                       
+20011aed  __aeabi_errno_addr               
+20011af5  __aeabi_memclr                   
+20011af5  __aeabi_memclr4                  
+20011af5  __aeabi_memclr8                  
+20011afd  malloc                           
+20011b05  I2CSupport_powerRelConstraint    
+20011b0b  I2CSupport_powerSetConstraint    
+20011b11  UART2Support_powerRelConstraint  
+20011b17  ClockP_doTick                    
+20011b1b  HwiP_clearInterrupt              
+20011b1f  HwiP_disableInterrupt            
+20011b23  HwiP_enable                      
+20011b27  HwiP_enableInterrupt             
+20011b2b  HwiP_post                        
+20011b33  NoRTOS_start                     
+20011b37  RingBuf_getCount                 
+20011b3b  SemaphoreP_delete                
+20011b41  __aeabi_memcpy                   
+20011b41  __aeabi_memcpy4                  
+20011b41  __aeabi_memcpy8                  
+20011b45  _system_pre_init                 
+20011b48  C$$EXIT                          
+20011b49  abort                            
 20012000  uart2CC32XXObjects0              
 20012178  PowerCC32XX_contextSave          
 200122a4  i2cCC32XXObjects                 
@@ -1318,10 +1322,11 @@ address   name
 200125f0  udmaCC3220SObject                
 20012604  bytesToSend                      
 20012608  i2c                              
-2001260c  timer0                           
-20012610  uart                             
-20012614  rxBuffer                         
-20012616  txBuffer                         
+2001260c  setpoint                         
+20012610  timer0                           
+20012614  uart                             
+20012618  rxBuffer                         
+2001261a  txBuffer                         
 20012620  __aeabi_ctype_table_             
 20012620  __aeabi_ctype_table_C            
 20012723  GPIO_pinUpperBound               
@@ -1333,27 +1338,27 @@ address   name
 20012be4  i2cCC32XXHWAttrs                 
 20012c1c  GPIO_config                      
 20012c3c  timerCC32XXHWAttrs               
-20012c74  udmaCC3220SHWAttrs               
-20012ca0  I2C_config                       
-20012ca8  Timer_config                     
-20012cb0  UART2_config                     
-20012cb8  UDMACC32XX_config                
-20012fe4  PowerCC32XX_module               
-20013150  parkInfo                         
-20013248  gpioPinConfigs                   
-20013338  SemaphoreP_defaultParams         
-2001334c  ClockP_tickPeriod                
-20013350  HwiP_swiPIntNum                  
-20013354  __aeabi_errno                    
-20013358  _lock                            
-2001335c  _unlock                          
-20013360  TimerFlag                        
-20013368  __TI_static_base__               
-2001343c  __TI_Handler_Table_Base          
-20013448  __TI_Handler_Table_Limit         
-20013450  __TI_CINIT_Base                  
-20013460  __TI_CINIT_Limit                 
-20013460  __TI_CINIT_Warm                  
+20012c80  udmaCC3220SHWAttrs               
+20012ca4  I2C_config                       
+20012cac  Timer_config                     
+20012cb4  UART2_config                     
+20012cbc  UDMACC32XX_config                
+20012fec  PowerCC32XX_module               
+20013158  parkInfo                         
+20013250  gpioPinConfigs                   
+20013340  SemaphoreP_defaultParams         
+20013354  ClockP_tickPeriod                
+20013358  HwiP_swiPIntNum                  
+2001335c  __aeabi_errno                    
+20013360  _lock                            
+20013364  _unlock                          
+20013368  TimerFlag                        
+20013370  __TI_static_base__               
+20013444  __TI_Handler_Table_Base          
+20013450  __TI_Handler_Table_Limit         
+20013458  __TI_CINIT_Base                  
+20013468  __TI_CINIT_Limit                 
+20013468  __TI_CINIT_Warm                  
 ffffffff  __TI_pprof_out_hndl              
 ffffffff  __TI_prof_data_size              
 ffffffff  __TI_prof_data_start             
@@ -1364,4 +1369,4 @@ UNDEFED   ITM_restore
 UNDEFED   __mpu_init                       
 UNDEFED   _system_post_cinit               
 
-[367 symbols]
+[368 symbols]
