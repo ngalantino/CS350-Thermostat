@@ -58,7 +58,9 @@
 Timer_Handle timer0;
 volatile unsigned char TimerFlag = 0;
 int setpoint;
+int temperature;
 float seconds;
+char heat;
 
 void timerCallback(Timer_Handle myHandle, int_fast16_t status)
 {
@@ -256,6 +258,53 @@ void gpioButtonFxn1(uint_least8_t index)
 
 }
 
+
+// Heater State Machine
+enum Heater_States { Heater_SMStart, Heater_LedOff, Heater_LedOn } Heater_State;
+
+//volatile unsigned char ticks = 0;
+
+void TickFct_Heater() {
+
+   switch( Heater_State ) { //Transitions
+      case Heater_SMStart:
+         Heater_State = Heater_LedOff; //Initial state
+         break;
+
+      case Heater_LedOff:
+         if (setpoint > temperature) {
+             Heater_State = Heater_LedOn;
+
+         }
+         break;
+
+      case Heater_LedOn:
+         if(temperature > setpoint){
+             Heater_State = Heater_LedOff;
+
+         }
+         break;
+
+      default:
+         Heater_State = Heater_SMStart;
+         break;
+   }
+
+   switch (Heater_State ) { //State actions
+      case Heater_LedOff:
+         GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_OFF);
+         break;
+
+      case Heater_LedOn:
+
+         GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
+         break;
+
+      default:
+         break;
+   }
+}
+
 /*
  *  ======== mainThread ========
  */
@@ -304,14 +353,12 @@ void *mainThread(void *arg0)
 
     while(1)
     {
-        int temperature;
         TimerFlag = 0; // Lower timer flag
         while (!TimerFlag){}  // Wait 100 milliseconds
 
         // Update temperature every 500 milliseconds
         if (readTemp_elapsedTime >= 500000) {
             temperature = readTemp();
-            //DISPLAY(snprintf(output, 64, "Update temp"))
 
             readTemp_elapsedTime = 0;
         }
@@ -320,9 +367,10 @@ void *mainThread(void *arg0)
         // Update LED and Report to UART every second
         if (updateAndReport_elapsedTime >= 1000000) {
             //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
-            DISPLAY(snprintf(output, 64, "<%02d,%02d,%04f>\n\r", temperature, setpoint, seconds))
+            DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04f>\n\r", temperature, setpoint, heat, seconds))
 
             // Call TickFct_SwitchHeater
+            TickFct_Heater();
 
             updateAndReport_elapsedTime = 0;
         }
@@ -332,7 +380,7 @@ void *mainThread(void *arg0)
             GPIO_enableInt(CONFIG_GPIO_BUTTON_0);
             GPIO_enableInt(CONFIG_GPIO_BUTTON_1);
 
-            DISPLAY(snprintf(output, 64, "Check button press\n\r"))
+            //DISPLAY(snprintf(output, 64, "Check button press\n\r"))
 
             checkButtonPress_elapsedTime = 0;
         }
@@ -352,7 +400,68 @@ void *mainThread(void *arg0)
 
 
 }
-/*
+
+
+/* State Machine
+enum BL_States { BL_SMStart, BL_LedOff, BL_LedOn } BL_State;
+
+volatile unsigned char ticks = 0;
+void TickFct_Blink(unsigned char counts, macro) {
+
+
+
+   switch( BL_State ) { //Transitions
+      case BL_SMStart:
+         ticks=0;
+         BL_State = BL_LedOff; //Initial state
+         break;
+      case BL_LedOff:
+         if (ticks == 1) {
+             ticks = 0;
+             BL_State = BL_LedOn;
+
+         }
+         break;
+      case BL_LedOn:
+         if(counts == ticks)
+         {
+             ticks = 0;
+             BL_State = BL_LedOff;
+
+         }
+         break;
+      default:
+         BL_State = BL_SMStart;
+         break;
+   }
+
+   switch (BL_State ) { //State actions
+      case BL_LedOff:
+
+         GPIO_write(macro, CONFIG_GPIO_LED_OFF);
+         ticks++;
+
+         break;
+
+      case BL_LedOn:
+
+         GPIO_write(macro, CONFIG_GPIO_LED_ON);
+         ticks++;
+         break;
+
+      default:
+         break;
+   }
+}
+
+*/
+
+
+
+
+
+
+/* Task Scheduler
 
    void main() {
    unsigned long BL_elapsedTime = 1500;
