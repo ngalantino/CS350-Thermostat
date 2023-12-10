@@ -61,27 +61,33 @@ void timerCallback(Timer_Handle myHandle, int_fast16_t status)
 TimerFlag = 1;
 }
 
+// Initialize Timer
 void initTimer(void)
 {
-Timer_Params params;
-// Init the driver
-Timer_init();
-// Configure the driver
-Timer_Params_init(&params);
-params.period = 1000000;
-params.periodUnits = Timer_PERIOD_US;
-params.timerMode = Timer_CONTINUOUS_CALLBACK;
-params.timerCallback = timerCallback;
-// Open the driver
-timer0 = Timer_open(CONFIG_TIMER_0, &params);
-if (timer0 == NULL) {
-/* Failed to initialized timer */
-while (1) {}
-}
-if (Timer_start(timer0) == Timer_STATUS_ERROR) {
-/* Failed to start timer */
-while (1) {}
-}
+    Timer_Params params;
+
+    // Init the driver
+    Timer_init();
+
+    // Configure the driver
+    Timer_Params_init(&params);
+    params.period = 100000;  // 100 milliseconds
+    params.periodUnits = Timer_PERIOD_US;
+    params.timerMode = Timer_CONTINUOUS_CALLBACK;
+    params.timerCallback = timerCallback;
+
+    // Open the driver
+    timer0 = Timer_open(CONFIG_TIMER_0, &params);
+
+    if (timer0 == NULL) {
+        /* Failed to initialized timer */
+        while (1) {}
+    }
+
+    if (Timer_start(timer0) == Timer_STATUS_ERROR) {
+        /* Failed to start timer */
+        while (1) {}
+    }
 }
 
 // UART Global Variables
@@ -183,34 +189,39 @@ else
 DISPLAY(snprintf(output, 64, "Temperature sensor not found, contact professor\n\r"));
 }
 }
+
+
 int16_t readTemp(void)
 {
-int j;
-int16_t temperature = 0;
-i2cTransaction.readCount = 2;
-if (I2C_transfer(i2c, &i2cTransaction))
-{
-/*
-* Extract degrees C from the received data;
-* see TMP sensor datasheet
-*/
-temperature = (rxBuffer[0] << 8) | (rxBuffer[1]);
-temperature *= 0.0078125;
-/*
-* If the MSB is set '1', then we have a 2's complement
-* negative value which needs to be sign extended
-*/
-if (rxBuffer[0] & 0x80)
-{
-temperature |= 0xF000;
-}
-}
-else
-{
-DISPLAY(snprintf(output, 64, "Error reading temperature sensor (%d)\n\r", i2cTransaction.status));
-DISPLAY(snprintf(output, 64, "Please power cycle your board by unplugging USB and plugging back in.\n\r"));
-}
-return temperature;
+    int j;
+    int16_t temperature = 0;
+    i2cTransaction.readCount = 2;
+
+    if (I2C_transfer(i2c, &i2cTransaction))
+    {
+        /*
+        * Extract degrees C from the received data;
+        * see TMP sensor datasheet
+        */
+        temperature = (rxBuffer[0] << 8) | (rxBuffer[1]);
+        temperature *= 0.0078125;
+        /*
+        * If the MSB is set '1', then we have a 2's complement
+        * negative value which needs to be sign extended
+        */
+        if (rxBuffer[0] & 0x80)
+            {
+                temperature |= 0xF000;
+            }
+    }
+
+    else
+        {
+        DISPLAY(snprintf(output, 64, "Error reading temperature sensor (%d)\n\r", i2cTransaction.status));
+
+        DISPLAY(snprintf(output, 64, "Please power cycle your board by unplugging USB and plugging back in.\n\r"));
+        }
+        return temperature;
 }
 
 /*
@@ -221,10 +232,9 @@ return temperature;
  */
 void gpioButtonFxn0(uint_least8_t index)
 {
-
+    // Increase temperature setpoint
     setpoint++;
-    /* Toggle an LED */
-    GPIO_toggle(CONFIG_GPIO_LED_0);
+
 }
 
 /*
@@ -236,6 +246,7 @@ void gpioButtonFxn0(uint_least8_t index)
  */
 void gpioButtonFxn1(uint_least8_t index)
 {
+    // Decrease temperature setpoint
     setpoint--;
 
 }
