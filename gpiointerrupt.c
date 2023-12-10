@@ -51,14 +51,20 @@
 /* I2C Drivers */
 #include <ti/drivers/I2C.h>
 
+// Print to UART Macro
 #define DISPLAY(x) UART2_write(uart, &output, x, &bytesToSend);
 
 // Driver Handles - Global variables
 Timer_Handle timer0;
 volatile unsigned char TimerFlag = 0;
+int setpoint;
+float seconds;
+
 void timerCallback(Timer_Handle myHandle, int_fast16_t status)
 {
-TimerFlag = 1;
+    seconds += .1;
+    TimerFlag = 1;
+
 }
 
 // Initialize Timer
@@ -93,7 +99,6 @@ void initTimer(void)
 // UART Global Variables
 char output[64];
 int bytesToSend;
-int setpoint;
 
 // Driver Handles - Global variables
 UART2_Handle uart;
@@ -293,16 +298,20 @@ void *mainThread(void *arg0)
     initTimer();
 
 
-
     while(1)
     {
-        int temperature = readTemp();
-        //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
-        DISPLAY(snprintf(output, 64, "<%02d,%02d>\n\r", temperature, setpoint))
 
+        int temperature = readTemp();
+
+        //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
+        DISPLAY(snprintf(output, 64, "<%02d,%02d,%04f>\n\r", temperature, setpoint, seconds))
+
+        // 100 ms
         while (!TimerFlag){}
+
+        // Reset flag
         TimerFlag=0;
-        // ++timer;
+
     }
 
     return (NULL);
