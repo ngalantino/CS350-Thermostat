@@ -297,20 +297,32 @@ void *mainThread(void *arg0)
     initI2C();
     initTimer();
 
+    // Task Scheduler Time Periods
+    unsigned long readTemp_elapsedTime = 500000; // 500 milliseconds
+    unsigned long checkButtonPress_elapsedTime = 200000; // 200 milliseconds
+    unsigned long updateAndReport_elapsedTime = 1000000; // 1 second
 
     while(1)
     {
 
         int temperature = readTemp();
 
-        //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
-        DISPLAY(snprintf(output, 64, "<%02d,%02d,%04f>\n\r", temperature, setpoint, seconds))
+        if (updateAndReport_elapsedTime >= 1000000) {
+            //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
+            DISPLAY(snprintf(output, 64, "<%02d,%02d,%04f>\n\r", temperature, setpoint, seconds))
+
+            updateAndReport_elapsedTime = 0;
+        }
 
         // 100 ms
         while (!TimerFlag){}
 
         // Reset flag
         TimerFlag=0;
+
+        readTemp_elapsedTime += 100000;  // Add timer period
+        checkButtonPress_elapsedTime += 100000;
+        updateAndReport_elapsedTime += 100000;
 
     }
 
@@ -320,3 +332,35 @@ void *mainThread(void *arg0)
 
 
 }
+/*
+
+   void main() {
+   unsigned long BL_elapsedTime = 1500;
+   unsigned long TL_elapsedTime = 500;
+   const unsigned long timerPeriod = 100;
+
+   B = 0; //init outputs
+   TimerSet(timerPeriod);
+   TimerOn();
+   BL_state = BL_SMStart;
+   TL_state = TL_SMStart;
+
+   while (1) {
+      TimerFlag = 0;         // Lower flag raised by timer
+      while (!TimerFlag){}   // Wait for timer period
+      if (BL_elapsedTime >= 1500) { // 1500 ms period
+         TickFct_BlinkLed(); // Execute one tick of the BlinkLed synchSM
+         BL_elapsedTime = 0;
+      }
+      if (TL_elapsedTime >= 500) { // 500 ms period
+         TickFct_ThreeLeds(); // Execute one tick of the ThreeLeds synchSM
+         TL_elapsedTime = 0;
+      }
+
+
+      BL_elapsedTime += timerPeriod;
+      TL_elapsedTime += timerPeriod;
+   }
+}
+
+ */
