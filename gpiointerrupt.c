@@ -293,11 +293,13 @@ void TickFct_Heater() {
    switch (Heater_State ) { //State actions
       case Heater_LedOff:
          GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_OFF);
+         heat = '0';
          break;
 
       case Heater_LedOn:
 
          GPIO_write(CONFIG_GPIO_LED_0, CONFIG_GPIO_LED_ON);
+         heat = '1';
          break;
 
       default:
@@ -367,7 +369,7 @@ void *mainThread(void *arg0)
         // Update LED and Report to UART every second
         if (updateAndReport_elapsedTime >= 1000000) {
             //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
-            DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04f>\n\r", temperature, setpoint, heat, seconds))
+            DISPLAY(snprintf(output, 64, "<%02d,%02d,%c,%04f>\n\r", temperature, setpoint, heat, seconds))
 
             // Call TickFct_SwitchHeater
             TickFct_Heater();
