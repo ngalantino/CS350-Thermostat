@@ -311,7 +311,7 @@ void *mainThread(void *arg0)
         // Update temperature every 500 milliseconds
         if (readTemp_elapsedTime >= 500000) {
             temperature = readTemp();
-            DISPLAY(snprintf(output, 64, "Update temp"))
+            //DISPLAY(snprintf(output, 64, "Update temp"))
 
             readTemp_elapsedTime = 0;
         }
@@ -322,8 +322,23 @@ void *mainThread(void *arg0)
             //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
             DISPLAY(snprintf(output, 64, "<%02d,%02d,%04f>\n\r", temperature, setpoint, seconds))
 
+            // Call TickFct_SwitchHeater
+
             updateAndReport_elapsedTime = 0;
         }
+
+        // Check for button press
+        if (checkButtonPress_elapsedTime >= 200000) {
+            GPIO_enableInt(CONFIG_GPIO_BUTTON_0);
+            GPIO_enableInt(CONFIG_GPIO_BUTTON_1);
+
+            DISPLAY(snprintf(output, 64, "Check button press\n\r"))
+
+            checkButtonPress_elapsedTime = 0;
+        }
+
+        GPIO_disableInt(CONFIG_GPIO_BUTTON_0);
+        GPIO_disableInt(CONFIG_GPIO_BUTTON_1);
 
         readTemp_elapsedTime += 100000;  // Add timer period
         checkButtonPress_elapsedTime += 100000;
