@@ -304,21 +304,26 @@ void *mainThread(void *arg0)
 
     while(1)
     {
+        int temperature;
+        TimerFlag = 0; // Lower timer flag
+        while (!TimerFlag){}  // Wait 100 milliseconds
 
-        int temperature = readTemp();
+        // Update temperature every 500 milliseconds
+        if (readTemp_elapsedTime >= 500000) {
+            temperature = readTemp();
+            DISPLAY(snprintf(output, 64, "Update temp"))
 
+            readTemp_elapsedTime = 0;
+        }
+
+
+        // Update LED and Report to UART every second
         if (updateAndReport_elapsedTime >= 1000000) {
             //DISPLAY(snprintf(output, 64, "<%02d,%02d,%d,%04d>\n\r", temperature, setpoint, heat, seconds))
             DISPLAY(snprintf(output, 64, "<%02d,%02d,%04f>\n\r", temperature, setpoint, seconds))
 
             updateAndReport_elapsedTime = 0;
         }
-
-        // 100 ms
-        while (!TimerFlag){}
-
-        // Reset flag
-        TimerFlag=0;
 
         readTemp_elapsedTime += 100000;  // Add timer period
         checkButtonPress_elapsedTime += 100000;
